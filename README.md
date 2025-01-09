@@ -43,7 +43,7 @@ https://servpub.madrid.es/CSEBD_WBINTER/arbol.html:
 
 # Resultado
 
-Mapas carto accesibles en las url:
+Mapas Carto accesibles a través de:
 
 - [Clasificacion k-means](https://pinea.app.carto.com/map/4aced469-f471-438e-8050-1f6b26d874d2)
 - [Grado de gentrificación](https://pinea.app.carto.com/map/5847c277-513e-4931-8e5c-b2efc0788f8e) 
