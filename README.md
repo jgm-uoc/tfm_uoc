@@ -1,4 +1,4 @@
-# Analisis de la gentrificación en los barrios de Madrid
+# Análisis de la gentrificación en los barrios de Madrid
 Periodo de estudio: 2019/2023
 
 # Estructura 
