@@ -2,7 +2,7 @@
 Periodo de estudio: 2019/2023
 
 # Estructura 
-- Codigo. Codigo R
+- Codigo. Codigo R. 
 - Datos. Ficheros de datos
 - Mapa. Ficheros cartográficos
 
@@ -34,14 +34,21 @@ Periodo de estudio: 2019/2023
  
  - Cartografía de los Barrios municipales de Madrid. https://geoportal.madrid.es/IDEAM_WBGEOPORTAL/dataset.iam?id=422fa235-762b-11e9-861d-ecb1d753f6e8. 
 
-# Banco de Datos del Ayuntamiento de Madrid. 
+## Banco de Datos del Ayuntamiento de Madrid. 
 https://servpub.madrid.es/CSEBD_WBINTER/arbol.html:
 
 - 1.1.3.3.B. Población clasificada por Nacionalidad (continente) y Sexo, según Distrito y Barrio (desde el 1 de enero de 2018. 
 - 1.1.5.9.B. Hogares clasificados por Tipo de hogar según su Composición y Nacionalidad de sus miembros (españoles y extranjeros) por Distrito
 
 
+# Resultado
 
+Mapas carto accesibles en las url:
+
+- [Clasificacion k-means](https://pinea.app.carto.com/map/4aced469-f471-438e-8050-1f6b26d874d2)
+- [Grado de gentrificación](https://pinea.app.carto.com/map/5847c277-513e-4931-8e5c-b2efc0788f8e) 
+
+# Licencia 
 Esta obra está sujeta a una licencia de Reconocimiento -  NoComercial - SinObraDerivada. 
 
 [3.0 España de CreativeCommons](https://creativecommons.org/licenses/by-nc-nd/3.0/es/)
