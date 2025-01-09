@@ -1,0 +1,913 @@
+﻿año;distrito;barrio;total;españoles
+1 de enero de 2018;01. Centro;01. Centro;132.352;103.218
+1 de enero de 2018;01. Centro;011. Palacio;22.515;18.660
+1 de enero de 2018;01. Centro;012. Embajadores;44.630;33.354
+1 de enero de 2018;01. Centro;013. Cortes;10.531;8.218
+1 de enero de 2018;01. Centro;014. Justicia;16.578;13.168
+1 de enero de 2018;01. Centro;015. Universidad;30.897;24.422
+1 de enero de 2018;01. Centro;016. Sol;7.201;5.396
+1 de enero de 2018;02. Arganzuela;02. Arganzuela;152.907;138.346
+1 de enero de 2018;02. Arganzuela;021. Imperial;22.719;21.201
+1 de enero de 2018;02. Arganzuela;022. Acacias;36.751;34.346
+1 de enero de 2018;02. Arganzuela;023. Chopera;19.799;17.229
+1 de enero de 2018;02. Arganzuela;024. Legazpi;19.252;17.934
+1 de enero de 2018;02. Arganzuela;025. Delicias;27.473;24.468
+1 de enero de 2018;02. Arganzuela;026. Palos de la Frontera;25.748;22.072
+1 de enero de 2018;02. Arganzuela;027. Atocha;1.165;1.096
+1 de enero de 2018;03. Retiro;03. Retiro;119.011;110.602
+1 de enero de 2018;03. Retiro;031. Pacífico;33.601;30.803
+1 de enero de 2018;03. Retiro;032. Adelfas;18.345;17.161
+1 de enero de 2018;03. Retiro;033. Estrella;23.238;22.379
+1 de enero de 2018;03. Retiro;034. Ibiza;21.472;19.346
+1 de enero de 2018;03. Retiro;035. Los Jerónimos;7.075;6.409
+1 de enero de 2018;03. Retiro;036. Niño Jesús;15.280;14.504
+1 de enero de 2018;04. Salamanca;04. Salamanca;145.268;127.075
+1 de enero de 2018;04. Salamanca;041. Recoletos;15.756;13.265
+1 de enero de 2018;04. Salamanca;042. Goya;29.604;25.797
+1 de enero de 2018;04. Salamanca;043. Fuente del Berro;20.747;18.437
+1 de enero de 2018;04. Salamanca;044. Guindalera;41.259;37.113
+1 de enero de 2018;04. Salamanca;045. Lista;20.956;18.146
+1 de enero de 2018;04. Salamanca;046. Castellana;16.946;14.317
+1 de enero de 2018;05. Chamartín;05. Chamartín;144.894;131.729
+1 de enero de 2018;05. Chamartín;051. El Viso;17.145;15.331
+1 de enero de 2018;05. Chamartín;052. Prosperidad;36.522;32.988
+1 de enero de 2018;05. Chamartín;053. Ciudad Jardín;18.487;16.399
+1 de enero de 2018;05. Chamartín;054. Hispanoamérica;31.373;29.272
+1 de enero de 2018;05. Chamartín;055. Nueva España;24.496;22.286
+1 de enero de 2018;05. Chamartín;056. Castilla;16.871;15.453
+1 de enero de 2018;06. Tetuán;06. Tetuán;155.967;127.810
+1 de enero de 2018;06. Tetuán;061. Bellas Vistas;28.750;22.444
+1 de enero de 2018;06. Tetuán;062. Cuatro Caminos;34.254;29.416
+1 de enero de 2018;06. Tetuán;063. Castillejos;20.363;17.371
+1 de enero de 2018;06. Tetuán;064. Almenara;22.421;19.436
+1 de enero de 2018;06. Tetuán;065. Valdeacederas;25.571;20.145
+1 de enero de 2018;06. Tetuán;066. Berruguete;24.608;18.998
+1 de enero de 2018;07. Chamberí;07. Chamberí;138.418;123.605
+1 de enero de 2018;07. Chamberí;071. Gaztambide;22.666;20.278
+1 de enero de 2018;07. Chamberí;072. Arapiles;24.335;21.739
+1 de enero de 2018;07. Chamberí;073. Trafalgar;24.523;21.472
+1 de enero de 2018;07. Chamberí;074. Almagro;19.799;17.263
+1 de enero de 2018;07. Chamberí;075. Ríos Rosas;27.049;24.174
+1 de enero de 2018;07. Chamberí;076. Vallehermoso;20.046;18.679
+1 de enero de 2018;08. Fuencarral-El Pardo;08. Fuencarral-El Pardo;242.928;223.680
+1 de enero de 2018;08. Fuencarral-El Pardo;081. El Pardo;3.456;3.337
+1 de enero de 2018;08. Fuencarral-El Pardo;082. Fuentelarreina;3.234;2.986
+1 de enero de 2018;08. Fuencarral-El Pardo;083. Peñagrande;44.412;41.144
+1 de enero de 2018;08. Fuencarral-El Pardo;084. Pilar;46.094;41.233
+1 de enero de 2018;08. Fuencarral-El Pardo;085. La Paz;33.783;32.161
+1 de enero de 2018;08. Fuencarral-El Pardo;086. Valverde;61.941;55.260
+1 de enero de 2018;08. Fuencarral-El Pardo;087. Mirasierra;32.058;30.511
+1 de enero de 2018;08. Fuencarral-El Pardo;088. El Goloso;17.950;17.048
+1 de enero de 2018;09. Moncloa-Aravaca;09. Moncloa-Aravaca;117.835;106.125
+1 de enero de 2018;09. Moncloa-Aravaca;091. Casa de Campo;12.900;11.864
+1 de enero de 2018;09. Moncloa-Aravaca;092. Argüelles;23.992;21.157
+1 de enero de 2018;09. Moncloa-Aravaca;093. Ciudad Universitaria;16.097;14.596
+1 de enero de 2018;09. Moncloa-Aravaca;094. Valdezarza;29.418;26.356
+1 de enero de 2018;09. Moncloa-Aravaca;095. Valdemarín;6.560;5.939
+1 de enero de 2018;09. Moncloa-Aravaca;096. El Plantío;2.720;2.500
+1 de enero de 2018;09. Moncloa-Aravaca;097. Aravaca;26.148;23.713
+1 de enero de 2018;10. Latina;10. Latina;235.785;201.653
+1 de enero de 2018;10. Latina;101. Los Cármenes;17.192;14.884
+1 de enero de 2018;10. Latina;102. Puerta del Ángel;41.397;33.900
+1 de enero de 2018;10. Latina;103. Lucero;35.488;29.971
+1 de enero de 2018;10. Latina;104. Aluche;65.961;56.064
+1 de enero de 2018;10. Latina;105. Campamento;18.983;15.747
+1 de enero de 2018;10. Latina;106. Cuatro Vientos;5.662;5.324
+1 de enero de 2018;10. Latina;107. Águilas;51.102;45.763
+1 de enero de 2018;11. Carabanchel;11. Carabanchel;248.220;204.022
+1 de enero de 2018;11. Carabanchel;111. Comillas;22.248;18.521
+1 de enero de 2018;11. Carabanchel;112. Opañel;32.492;26.145
+1 de enero de 2018;11. Carabanchel;113. San Isidro;38.554;31.339
+1 de enero de 2018;11. Carabanchel;114. Vista Alegre;45.008;35.842
+1 de enero de 2018;11. Carabanchel;115. Puerta Bonita;33.933;27.025
+1 de enero de 2018;11. Carabanchel;116. Buenavista;46.216;40.644
+1 de enero de 2018;11. Carabanchel;117. Abrantes;29.769;24.506
+1 de enero de 2018;12. Usera;12. Usera;136.978;108.793
+1 de enero de 2018;12. Usera;121. Orcasitas;22.555;20.919
+1 de enero de 2018;12. Usera;122. Orcasur;13.572;11.755
+1 de enero de 2018;12. Usera;123. San Fermín;23.209;19.148
+1 de enero de 2018;12. Usera;124. Almendrales;20.986;15.490
+1 de enero de 2018;12. Usera;125. Moscardó;25.726;19.103
+1 de enero de 2018;12. Usera;126. Zofío;13.697;10.647
+1 de enero de 2018;12. Usera;127. Pradolongo;17.233;11.731
+1 de enero de 2018;13. Puente de Vallecas;13. Puente de Vallecas;230.488;193.074
+1 de enero de 2018;13. Puente de Vallecas;131. Entrevías;33.986;29.265
+1 de enero de 2018;13. Puente de Vallecas;132. San Diego;40.267;29.666
+1 de enero de 2018;13. Puente de Vallecas;133. Palomeras Bajas;39.669;34.658
+1 de enero de 2018;13. Puente de Vallecas;134. Palomeras Sureste;42.120;37.686
+1 de enero de 2018;13. Puente de Vallecas;135. Portazgo;27.908;24.273
+1 de enero de 2018;13. Puente de Vallecas;136. Numancia;46.538;37.526
+1 de enero de 2018;14. Moratalaz;14. Moratalaz;94.261;86.322
+1 de enero de 2018;14. Moratalaz;141. Pavones;9.081;8.232
+1 de enero de 2018;14. Moratalaz;142. Horcajo;6.326;6.112
+1 de enero de 2018;14. Moratalaz;143. Marroquina;27.378;25.807
+1 de enero de 2018;14. Moratalaz;144. Media Legua;17.757;16.289
+1 de enero de 2018;14. Moratalaz;145. Fontarrón;16.902;14.797
+1 de enero de 2018;14. Moratalaz;146. Vinateros;16.817;15.085
+1 de enero de 2018;15. Ciudad Lineal;15. Ciudad Lineal;214.463;186.176
+1 de enero de 2018;15. Ciudad Lineal;151. Ventas;47.744;40.383
+1 de enero de 2018;15. Ciudad Lineal;152. Pueblo Nuevo;61.160;51.597
+1 de enero de 2018;15. Ciudad Lineal;153. Quintana;24.373;20.128
+1 de enero de 2018;15. Ciudad Lineal;154. Concepción;20.803;18.033
+1 de enero de 2018;15. Ciudad Lineal;155. San Pascual;18.068;16.665
+1 de enero de 2018;15. Ciudad Lineal;156. San Juan Bautista;12.433;11.348
+1 de enero de 2018;15. Ciudad Lineal;157. Colina;6.288;5.686
+1 de enero de 2018;15. Ciudad Lineal;158. Atalaya;1.575;1.416
+1 de enero de 2018;15. Ciudad Lineal;159. Costillares;22.019;20.920
+1 de enero de 2018;16. Hortaleza;16. Hortaleza;183.930;166.805
+1 de enero de 2018;16. Hortaleza;161. Palomas;6.738;6.137
+1 de enero de 2018;16. Hortaleza;162. Piovera;14.723;12.686
+1 de enero de 2018;16. Hortaleza;163. Canillas;40.627;37.177
+1 de enero de 2018;16. Hortaleza;164. Pinar del Rey;52.274;47.201
+1 de enero de 2018;16. Hortaleza;165. Apóstol Santiago;15.271;14.075
+1 de enero de 2018;16. Hortaleza;166. Valdefuentes;54.297;49.529
+1 de enero de 2018;17. Villaverde;17. Villaverde;145.523;119.276
+1 de enero de 2018;17. Villaverde;"171. Villaverde Alto, Casco Histórico de Villaverde";44.299;36.204
+1 de enero de 2018;17. Villaverde;172. San Cristóbal;15.498;10.815
+1 de enero de 2018;17. Villaverde;173. Butarque;18.268;15.833
+1 de enero de 2018;17. Villaverde;174. Los Rosales;36.975;30.356
+1 de enero de 2018;17. Villaverde;175. Ángeles;30.483;26.068
+1 de enero de 2018;18. Villa de Vallecas;18. Villa de Vallecas;107.649;95.524
+1 de enero de 2018;18. Villa de Vallecas;181. Casco Histórico de Vallecas;39.740;33.759
+1 de enero de 2018;18. Villa de Vallecas;182. Santa Eugenia;24.295;21.903
+1 de enero de 2018;18. Villa de Vallecas;183. Ensanche de Vallecas;43.614;39.862
+1 de enero de 2018;19. Vicálvaro;19. Vicálvaro;70.962;62.837
+1 de enero de 2018;19. Vicálvaro;191. Casco Histórico de Vicálvaro;34.200;27.752
+1 de enero de 2018;19. Vicálvaro;192. Valdebernardo;17.637;16.630
+1 de enero de 2018;19. Vicálvaro;193. Valderrivas;18.180;17.588
+1 de enero de 2018;19. Vicálvaro;194. El Cañaveral;945;867
+1 de enero de 2018;20. San Blas-Canillejas;20. San Blas-Canillejas;156.149;138.834
+1 de enero de 2018;20. San Blas-Canillejas;201. Simancas;27.242;23.085
+1 de enero de 2018;20. San Blas-Canillejas;202. Hellín;8.941;8.013
+1 de enero de 2018;20. San Blas-Canillejas;203. Amposta;8.346;7.164
+1 de enero de 2018;20. San Blas-Canillejas;204. Arcos;23.939;21.856
+1 de enero de 2018;20. San Blas-Canillejas;205. Rosas;31.560;30.039
+1 de enero de 2018;20. San Blas-Canillejas;206. Rejas;16.315;13.761
+1 de enero de 2018;20. San Blas-Canillejas;207. Canillejas;28.519;24.440
+1 de enero de 2018;20. San Blas-Canillejas;208. El Salvador;11.287;10.476
+1 de enero de 2018;21. Barajas;21. Barajas;47.836;43.599
+1 de enero de 2018;21. Barajas;211. Alameda de Osuna;19.446;18.402
+1 de enero de 2018;21. Barajas;212. Aeropuerto;1.794;1.447
+1 de enero de 2018;21. Barajas;213. Casco Histórico de Barajas;7.336;6.068
+1 de enero de 2018;21. Barajas;214. Timón;11.750;10.659
+1 de enero de 2018;21. Barajas;215. Corralejos;7.510;7.023
+1 de enero de 2019;01. Centro;01. Centro;134.881;104.041
+1 de enero de 2019;01. Centro;011. Palacio;22.923;18.894
+1 de enero de 2019;01. Centro;012. Embajadores;45.259;33.388
+1 de enero de 2019;01. Centro;013. Cortes;10.484;8.064
+1 de enero de 2019;01. Centro;014. Justicia;17.153;13.486
+1 de enero de 2019;01. Centro;015. Universidad;31.725;24.880
+1 de enero de 2019;01. Centro;016. Sol;7.337;5.329
+1 de enero de 2019;02. Arganzuela;02. Arganzuela;153.830;138.533
+1 de enero de 2019;02. Arganzuela;021. Imperial;22.766;21.160
+1 de enero de 2019;02. Arganzuela;022. Acacias;36.785;34.207
+1 de enero de 2019;02. Arganzuela;023. Chopera;19.993;17.328
+1 de enero de 2019;02. Arganzuela;024. Legazpi;19.652;18.261
+1 de enero de 2019;02. Arganzuela;025. Delicias;27.658;24.508
+1 de enero de 2019;02. Arganzuela;026. Palos de la Frontera;25.801;21.959
+1 de enero de 2019;02. Arganzuela;027. Atocha;1.175;1.110
+1 de enero de 2019;03. Retiro;03. Retiro;119.379;110.114
+1 de enero de 2019;03. Retiro;031. Pacífico;33.571;30.613
+1 de enero de 2019;03. Retiro;032. Adelfas;18.474;17.171
+1 de enero de 2019;03. Retiro;033. Estrella;23.306;22.345
+1 de enero de 2019;03. Retiro;034. Ibiza;21.646;19.196
+1 de enero de 2019;03. Retiro;035. Los Jerónimos;7.039;6.315
+1 de enero de 2019;03. Retiro;036. Niño Jesús;15.343;14.474
+1 de enero de 2019;04. Salamanca;04. Salamanca;146.148;126.773
+1 de enero de 2019;04. Salamanca;041. Recoletos;15.734;13.090
+1 de enero de 2019;04. Salamanca;042. Goya;29.649;25.525
+1 de enero de 2019;04. Salamanca;043. Fuente del Berro;21.071;18.581
+1 de enero de 2019;04. Salamanca;044. Guindalera;41.609;37.186
+1 de enero de 2019;04. Salamanca;045. Lista;20.961;18.083
+1 de enero de 2019;04. Salamanca;046. Castellana;17.124;14.308
+1 de enero de 2019;05. Chamartín;05. Chamartín;145.865;132.067
+1 de enero de 2019;05. Chamartín;051. El Viso;17.302;15.395
+1 de enero de 2019;05. Chamartín;052. Prosperidad;36.651;32.863
+1 de enero de 2019;05. Chamartín;053. Ciudad Jardín;18.642;16.497
+1 de enero de 2019;05. Chamartín;054. Hispanoamérica;31.733;29.460
+1 de enero de 2019;05. Chamartín;055. Nueva España;24.657;22.405
+1 de enero de 2019;05. Chamartín;056. Castilla;16.880;15.447
+1 de enero de 2019;06. Tetuán;06. Tetuán;157.937;127.859
+1 de enero de 2019;06. Tetuán;061. Bellas Vistas;29.146;22.496
+1 de enero de 2019;06. Tetuán;062. Cuatro Caminos;34.608;29.450
+1 de enero de 2019;06. Tetuán;063. Castillejos;20.513;17.420
+1 de enero de 2019;06. Tetuán;064. Almenara;22.642;19.381
+1 de enero de 2019;06. Tetuán;065. Valdeacederas;26.021;20.120
+1 de enero de 2019;06. Tetuán;066. Berruguete;25.007;18.992
+1 de enero de 2019;07. Chamberí;07. Chamberí;139.448;123.626
+1 de enero de 2019;07. Chamberí;071. Gaztambide;22.891;20.308
+1 de enero de 2019;07. Chamberí;072. Arapiles;24.455;21.709
+1 de enero de 2019;07. Chamberí;073. Trafalgar;24.696;21.412
+1 de enero de 2019;07. Chamberí;074. Almagro;19.807;17.129
+1 de enero de 2019;07. Chamberí;075. Ríos Rosas;27.382;24.346
+1 de enero de 2019;07. Chamberí;076. Vallehermoso;20.217;18.722
+1 de enero de 2019;08. Fuencarral-El Pardo;08. Fuencarral-El Pardo;246.021;225.139
+1 de enero de 2019;08. Fuencarral-El Pardo;081. El Pardo;3.454;3.313
+1 de enero de 2019;08. Fuencarral-El Pardo;082. Fuentelarreina;3.265;3.022
+1 de enero de 2019;08. Fuencarral-El Pardo;083. Peñagrande;44.508;41.086
+1 de enero de 2019;08. Fuencarral-El Pardo;084. Pilar;46.419;41.112
+1 de enero de 2019;08. Fuencarral-El Pardo;085. La Paz;33.765;32.002
+1 de enero de 2019;08. Fuencarral-El Pardo;086. Valverde;63.201;55.809
+1 de enero de 2019;08. Fuencarral-El Pardo;087. Mirasierra;32.898;31.278
+1 de enero de 2019;08. Fuencarral-El Pardo;088. El Goloso;18.511;17.517
+1 de enero de 2019;09. Moncloa-Aravaca;09. Moncloa-Aravaca;119.423;106.886
+1 de enero de 2019;09. Moncloa-Aravaca;091. Casa de Campo;12.991;11.878
+1 de enero de 2019;09. Moncloa-Aravaca;092. Argüelles;24.093;21.100
+1 de enero de 2019;09. Moncloa-Aravaca;093. Ciudad Universitaria;16.260;14.684
+1 de enero de 2019;09. Moncloa-Aravaca;094. Valdezarza;29.722;26.393
+1 de enero de 2019;09. Moncloa-Aravaca;095. Valdemarín;6.726;6.099
+1 de enero de 2019;09. Moncloa-Aravaca;096. El Plantío;2.808;2.547
+1 de enero de 2019;09. Moncloa-Aravaca;097. Aravaca;26.823;24.185
+1 de enero de 2019;10. Latina;10. Latina;238.154;200.981
+1 de enero de 2019;10. Latina;101. Los Cármenes;17.397;14.922
+1 de enero de 2019;10. Latina;102. Puerta del Ángel;41.730;33.691
+1 de enero de 2019;10. Latina;103. Lucero;36.090;29.961
+1 de enero de 2019;10. Latina;104. Aluche;66.351;55.711
+1 de enero de 2019;10. Latina;105. Campamento;19.281;15.687
+1 de enero de 2019;10. Latina;106. Cuatro Vientos;5.748;5.393
+1 de enero de 2019;10. Latina;107. Águilas;51.557;45.616
+1 de enero de 2019;11. Carabanchel;11. Carabanchel;253.040;204.105
+1 de enero de 2019;11. Carabanchel;111. Comillas;22.403;18.339
+1 de enero de 2019;11. Carabanchel;112. Opañel;33.051;26.118
+1 de enero de 2019;11. Carabanchel;113. San Isidro;38.957;31.229
+1 de enero de 2019;11. Carabanchel;114. Vista Alegre;45.975;35.789
+1 de enero de 2019;11. Carabanchel;115. Puerta Bonita;34.860;27.033
+1 de enero de 2019;11. Carabanchel;116. Buenavista;47.055;40.888
+1 de enero de 2019;11. Carabanchel;117. Abrantes;30.739;24.709
+1 de enero de 2019;12. Usera;12. Usera;139.501;108.764
+1 de enero de 2019;12. Usera;121. Orcasitas;22.837;20.944
+1 de enero de 2019;12. Usera;122. Orcasur;13.808;11.754
+1 de enero de 2019;12. Usera;123. San Fermín;23.666;19.146
+1 de enero de 2019;12. Usera;124. Almendrales;21.439;15.570
+1 de enero de 2019;12. Usera;125. Moscardó;26.353;19.180
+1 de enero de 2019;12. Usera;126. Zofío;13.968;10.645
+1 de enero de 2019;12. Usera;127. Pradolongo;17.430;11.525
+1 de enero de 2019;13. Puente de Vallecas;13. Puente de Vallecas;234.770;192.764
+1 de enero de 2019;13. Puente de Vallecas;131. Entrevías;34.698;29.327
+1 de enero de 2019;13. Puente de Vallecas;132. San Diego;41.664;29.629
+1 de enero de 2019;13. Puente de Vallecas;133. Palomeras Bajas;40.166;34.543
+1 de enero de 2019;13. Puente de Vallecas;134. Palomeras Sureste;42.594;37.570
+1 de enero de 2019;13. Puente de Vallecas;135. Portazgo;28.350;24.268
+1 de enero de 2019;13. Puente de Vallecas;136. Numancia;47.298;37.427
+1 de enero de 2019;14. Moratalaz;14. Moratalaz;94.609;85.765
+1 de enero de 2019;14. Moratalaz;141. Pavones;9.137;8.199
+1 de enero de 2019;14. Moratalaz;142. Horcajo;6.334;6.090
+1 de enero de 2019;14. Moratalaz;143. Marroquina;27.260;25.571
+1 de enero de 2019;14. Moratalaz;144. Media Legua;17.871;16.204
+1 de enero de 2019;14. Moratalaz;145. Fontarrón;17.139;14.745
+1 de enero de 2019;14. Moratalaz;146. Vinateros;16.868;14.956
+1 de enero de 2019;15. Ciudad Lineal;15. Ciudad Lineal;216.270;185.595
+1 de enero de 2019;15. Ciudad Lineal;151. Ventas;48.099;40.175
+1 de enero de 2019;15. Ciudad Lineal;152. Pueblo Nuevo;62.111;51.383
+1 de enero de 2019;15. Ciudad Lineal;153. Quintana;24.622;20.087
+1 de enero de 2019;15. Ciudad Lineal;154. Concepción;20.856;17.977
+1 de enero de 2019;15. Ciudad Lineal;155. San Pascual;18.130;16.663
+1 de enero de 2019;15. Ciudad Lineal;156. San Juan Bautista;12.487;11.294
+1 de enero de 2019;15. Ciudad Lineal;157. Colina;6.387;5.741
+1 de enero de 2019;15. Ciudad Lineal;158. Atalaya;1.568;1.408
+1 de enero de 2019;15. Ciudad Lineal;159. Costillares;22.010;20.867
+1 de enero de 2019;16. Hortaleza;16. Hortaleza;188.267;169.173
+1 de enero de 2019;16. Hortaleza;161. Palomas;6.790;6.117
+1 de enero de 2019;16. Hortaleza;162. Piovera;14.911;12.724
+1 de enero de 2019;16. Hortaleza;163. Canillas;40.578;36.912
+1 de enero de 2019;16. Hortaleza;164. Pinar del Rey;52.691;47.047
+1 de enero de 2019;16. Hortaleza;165. Apóstol Santiago;15.418;14.015
+1 de enero de 2019;16. Hortaleza;166. Valdefuentes;57.879;52.358
+1 de enero de 2019;17. Villaverde;17. Villaverde;148.883;119.917
+1 de enero de 2019;17. Villaverde;"171. Villaverde Alto, Casco Histórico de Villaverde";45.204;36.229
+1 de enero de 2019;17. Villaverde;172. San Cristóbal;16.052;10.885
+1 de enero de 2019;17. Villaverde;173. Butarque;18.870;16.242
+1 de enero de 2019;17. Villaverde;174. Los Rosales;37.587;30.373
+1 de enero de 2019;17. Villaverde;175. Ángeles;31.170;26.188
+1 de enero de 2019;18. Villa de Vallecas;18. Villa de Vallecas;110.436;96.893
+1 de enero de 2019;18. Villa de Vallecas;181. Casco Histórico de Vallecas;40.280;33.714
+1 de enero de 2019;18. Villa de Vallecas;182. Santa Eugenia;24.328;21.818
+1 de enero de 2019;18. Villa de Vallecas;183. Ensanche de Vallecas;45.828;41.361
+1 de enero de 2019;19. Vicálvaro;19. Vicálvaro;72.126;63.385
+1 de enero de 2019;19. Vicálvaro;191. Casco Histórico de Vicálvaro;34.816;27.933
+1 de enero de 2019;19. Vicálvaro;192. Valdebernardo;17.638;16.558
+1 de enero de 2019;19. Vicálvaro;193. Valderrivas;18.142;17.493
+1 de enero de 2019;19. Vicálvaro;194. El Cañaveral;1.530;1.401
+1 de enero de 2019;20. San Blas-Canillejas;20. San Blas-Canillejas;158.166;138.733
+1 de enero de 2019;20. San Blas-Canillejas;201. Simancas;27.918;23.213
+1 de enero de 2019;20. San Blas-Canillejas;202. Hellín;9.157;8.010
+1 de enero de 2019;20. San Blas-Canillejas;203. Amposta;8.575;7.197
+1 de enero de 2019;20. San Blas-Canillejas;204. Arcos;24.211;21.855
+1 de enero de 2019;20. San Blas-Canillejas;205. Rosas;31.677;29.947
+1 de enero de 2019;20. San Blas-Canillejas;206. Rejas;16.693;13.797
+1 de enero de 2019;20. San Blas-Canillejas;207. Canillejas;28.584;24.262
+1 de enero de 2019;20. San Blas-Canillejas;208. El Salvador;11.351;10.452
+1 de enero de 2019;21. Barajas;21. Barajas;48.972;44.365
+1 de enero de 2019;21. Barajas;211. Alameda de Osuna;19.526;18.422
+1 de enero de 2019;21. Barajas;212. Aeropuerto;1.851;1.474
+1 de enero de 2019;21. Barajas;213. Casco Histórico de Barajas;7.565;6.177
+1 de enero de 2019;21. Barajas;214. Timón;12.388;11.158
+1 de enero de 2019;21. Barajas;215. Corralejos;7.642;7.134
+1 de enero de 2020;01. Centro;01. Centro;140.473;106.387
+1 de enero de 2020;01. Centro;011. Palacio;23.593;19.220
+1 de enero de 2020;01. Centro;012. Embajadores;47.048;33.845
+1 de enero de 2020;01. Centro;013. Cortes;10.771;8.147
+1 de enero de 2020;01. Centro;014. Justicia;18.021;13.979
+1 de enero de 2020;01. Centro;015. Universidad;33.418;25.805
+1 de enero de 2020;01. Centro;016. Sol;7.622;5.391
+1 de enero de 2020;02. Arganzuela;02. Arganzuela;155.660;139.292
+1 de enero de 2020;02. Arganzuela;021. Imperial;22.908;21.147
+1 de enero de 2020;02. Arganzuela;022. Acacias;36.922;34.172
+1 de enero de 2020;02. Arganzuela;023. Chopera;20.287;17.402
+1 de enero de 2020;02. Arganzuela;024. Legazpi;19.810;18.383
+1 de enero de 2020;02. Arganzuela;025. Delicias;28.233;24.851
+1 de enero de 2020;02. Arganzuela;026. Palos de la Frontera;26.289;22.189
+1 de enero de 2020;02. Arganzuela;027. Atocha;1.211;1.148
+1 de enero de 2020;03. Retiro;03. Retiro;120.406;110.208
+1 de enero de 2020;03. Retiro;031. Pacífico;33.767;30.566
+1 de enero de 2020;03. Retiro;032. Adelfas;18.785;17.388
+1 de enero de 2020;03. Retiro;033. Estrella;23.354;22.262
+1 de enero de 2020;03. Retiro;034. Ibiza;21.993;19.219
+1 de enero de 2020;03. Retiro;035. Los Jerónimos;7.046;6.247
+1 de enero de 2020;03. Retiro;036. Niño Jesús;15.461;14.526
+1 de enero de 2020;04. Salamanca;04. Salamanca;147.854;126.480
+1 de enero de 2020;04. Salamanca;041. Recoletos;15.846;12.963
+1 de enero de 2020;04. Salamanca;042. Goya;29.945;25.410
+1 de enero de 2020;04. Salamanca;043. Fuente del Berro;21.249;18.490
+1 de enero de 2020;04. Salamanca;044. Guindalera;42.306;37.423
+1 de enero de 2020;04. Salamanca;045. Lista;21.211;18.009
+1 de enero de 2020;04. Salamanca;046. Castellana;17.297;14.185
+1 de enero de 2020;05. Chamartín;05. Chamartín;147.551;132.677
+1 de enero de 2020;05. Chamartín;051. El Viso;17.433;15.423
+1 de enero de 2020;05. Chamartín;052. Prosperidad;36.940;32.938
+1 de enero de 2020;05. Chamartín;053. Ciudad Jardín;18.893;16.562
+1 de enero de 2020;05. Chamartín;054. Hispanoamérica;32.042;29.531
+1 de enero de 2020;05. Chamartín;055. Nueva España;25.015;22.619
+1 de enero de 2020;05. Chamartín;056. Castilla;17.228;15.604
+1 de enero de 2020;06. Tetuán;06. Tetuán;161.313;128.967
+1 de enero de 2020;06. Tetuán;061. Bellas Vistas;29.895;22.697
+1 de enero de 2020;06. Tetuán;062. Cuatro Caminos;35.192;29.756
+1 de enero de 2020;06. Tetuán;063. Castillejos;20.835;17.519
+1 de enero de 2020;06. Tetuán;064. Almenara;23.003;19.348
+1 de enero de 2020;06. Tetuán;065. Valdeacederas;26.545;20.215
+1 de enero de 2020;06. Tetuán;066. Berruguete;25.843;19.432
+1 de enero de 2020;07. Chamberí;07. Chamberí;140.866;123.791
+1 de enero de 2020;07. Chamberí;071. Gaztambide;23.329;20.423
+1 de enero de 2020;07. Chamberí;072. Arapiles;24.704;21.691
+1 de enero de 2020;07. Chamberí;073. Trafalgar;25.023;21.439
+1 de enero de 2020;07. Chamberí;074. Almagro;19.838;17.064
+1 de enero de 2020;07. Chamberí;075. Ríos Rosas;27.569;24.351
+1 de enero de 2020;07. Chamberí;076. Vallehermoso;20.403;18.823
+1 de enero de 2020;08. Fuencarral-El Pardo;08. Fuencarral-El Pardo;249.973;227.089
+1 de enero de 2020;08. Fuencarral-El Pardo;081. El Pardo;3.472;3.327
+1 de enero de 2020;08. Fuencarral-El Pardo;082. Fuentelarreina;3.308;3.057
+1 de enero de 2020;08. Fuencarral-El Pardo;083. Peñagrande;44.938;41.196
+1 de enero de 2020;08. Fuencarral-El Pardo;084. Pilar;46.855;41.080
+1 de enero de 2020;08. Fuencarral-El Pardo;085. La Paz;33.644;31.796
+1 de enero de 2020;08. Fuencarral-El Pardo;086. Valverde;64.668;56.488
+1 de enero de 2020;08. Fuencarral-El Pardo;087. Mirasierra;34.046;32.259
+1 de enero de 2020;08. Fuencarral-El Pardo;088. El Goloso;19.042;17.886
+1 de enero de 2020;09. Moncloa-Aravaca;09. Moncloa-Aravaca;121.683;107.972
+1 de enero de 2020;09. Moncloa-Aravaca;091. Casa de Campo;13.201;11.921
+1 de enero de 2020;09. Moncloa-Aravaca;092. Argüelles;24.423;21.070
+1 de enero de 2020;09. Moncloa-Aravaca;093. Ciudad Universitaria;16.395;14.742
+1 de enero de 2020;09. Moncloa-Aravaca;094. Valdezarza;30.405;26.741
+1 de enero de 2020;09. Moncloa-Aravaca;095. Valdemarín;6.957;6.289
+1 de enero de 2020;09. Moncloa-Aravaca;096. El Plantío;2.799;2.533
+1 de enero de 2020;09. Moncloa-Aravaca;097. Aravaca;27.503;24.676
+1 de enero de 2020;10. Latina;10. Latina;242.139;200.803
+1 de enero de 2020;10. Latina;101. Los Cármenes;17.736;14.863
+1 de enero de 2020;10. Latina;102. Puerta del Ángel;42.362;33.602
+1 de enero de 2020;10. Latina;103. Lucero;36.783;29.968
+1 de enero de 2020;10. Latina;104. Aluche;67.418;55.588
+1 de enero de 2020;10. Latina;105. Campamento;19.848;15.686
+1 de enero de 2020;10. Latina;106. Cuatro Vientos;5.881;5.453
+1 de enero de 2020;10. Latina;107. Águilas;52.111;45.643
+1 de enero de 2020;11. Carabanchel;11. Carabanchel;260.196;205.231
+1 de enero de 2020;11. Carabanchel;111. Comillas;23.001;18.442
+1 de enero de 2020;11. Carabanchel;112. Opañel;33.681;26.151
+1 de enero de 2020;11. Carabanchel;113. San Isidro;40.023;31.445
+1 de enero de 2020;11. Carabanchel;114. Vista Alegre;47.602;35.997
+1 de enero de 2020;11. Carabanchel;115. Puerta Bonita;35.932;27.165
+1 de enero de 2020;11. Carabanchel;116. Buenavista;48.010;41.133
+1 de enero de 2020;11. Carabanchel;117. Abrantes;31.947;24.898
+1 de enero de 2020;12. Usera;12. Usera;142.894;108.787
+1 de enero de 2020;12. Usera;121. Orcasitas;23.173;20.957
+1 de enero de 2020;12. Usera;122. Orcasur;14.154;11.788
+1 de enero de 2020;12. Usera;123. San Fermín;24.001;19.111
+1 de enero de 2020;12. Usera;124. Almendrales;22.179;15.702
+1 de enero de 2020;12. Usera;125. Moscardó;27.128;19.209
+1 de enero de 2020;12. Usera;126. Zofío;14.412;10.670
+1 de enero de 2020;12. Usera;127. Pradolongo;17.847;11.350
+1 de enero de 2020;13. Puente de Vallecas;13. Puente de Vallecas;240.867;193.305
+1 de enero de 2020;13. Puente de Vallecas;131. Entrevías;35.516;29.470
+1 de enero de 2020;13. Puente de Vallecas;132. San Diego;43.899;29.917
+1 de enero de 2020;13. Puente de Vallecas;133. Palomeras Bajas;40.910;34.556
+1 de enero de 2020;13. Puente de Vallecas;134. Palomeras Sureste;43.164;37.545
+1 de enero de 2020;13. Puente de Vallecas;135. Portazgo;28.968;24.373
+1 de enero de 2020;13. Puente de Vallecas;136. Numancia;48.410;37.444
+1 de enero de 2020;14. Moratalaz;14. Moratalaz;95.614;85.536
+1 de enero de 2020;14. Moratalaz;141. Pavones;9.355;8.173
+1 de enero de 2020;14. Moratalaz;142. Horcajo;6.435;6.122
+1 de enero de 2020;14. Moratalaz;143. Marroquina;27.232;25.384
+1 de enero de 2020;14. Moratalaz;144. Media Legua;17.951;16.074
+1 de enero de 2020;14. Moratalaz;145. Fontarrón;17.519;14.783
+1 de enero de 2020;14. Moratalaz;146. Vinateros;17.122;15.000
+1 de enero de 2020;15. Ciudad Lineal;15. Ciudad Lineal;219.867;186.095
+1 de enero de 2020;15. Ciudad Lineal;151. Ventas;48.891;40.192
+1 de enero de 2020;15. Ciudad Lineal;152. Pueblo Nuevo;63.521;51.565
+1 de enero de 2020;15. Ciudad Lineal;153. Quintana;25.151;20.150
+1 de enero de 2020;15. Ciudad Lineal;154. Concepción;21.153;18.073
+1 de enero de 2020;15. Ciudad Lineal;155. San Pascual;18.107;16.522
+1 de enero de 2020;15. Ciudad Lineal;156. San Juan Bautista;12.725;11.360
+1 de enero de 2020;15. Ciudad Lineal;157. Colina;6.519;5.825
+1 de enero de 2020;15. Ciudad Lineal;158. Atalaya;1.555;1.395
+1 de enero de 2020;15. Ciudad Lineal;159. Costillares;22.245;21.013
+1 de enero de 2020;16. Hortaleza;16. Hortaleza;193.264;172.090
+1 de enero de 2020;16. Hortaleza;161. Palomas;6.839;6.105
+1 de enero de 2020;16. Hortaleza;162. Piovera;14.939;12.678
+1 de enero de 2020;16. Hortaleza;163. Canillas;40.838;36.881
+1 de enero de 2020;16. Hortaleza;164. Pinar del Rey;53.162;46.868
+1 de enero de 2020;16. Hortaleza;165. Apóstol Santiago;15.555;13.961
+1 de enero de 2020;16. Hortaleza;166. Valdefuentes;61.931;55.597
+1 de enero de 2020;17. Villaverde;17. Villaverde;154.318;121.571
+1 de enero de 2020;17. Villaverde;"171. Villaverde Alto, Casco Histórico de Villaverde";46.749;36.438
+1 de enero de 2020;17. Villaverde;172. San Cristóbal;16.898;10.972
+1 de enero de 2020;17. Villaverde;173. Butarque;20.026;17.073
+1 de enero de 2020;17. Villaverde;174. Los Rosales;38.107;30.330
+1 de enero de 2020;17. Villaverde;175. Ángeles;32.538;26.758
+1 de enero de 2020;18. Villa de Vallecas;18. Villa de Vallecas;114.512;99.083
+1 de enero de 2020;18. Villa de Vallecas;181. Casco Histórico de Vallecas;40.956;33.624
+1 de enero de 2020;18. Villa de Vallecas;182. Santa Eugenia;24.684;22.061
+1 de enero de 2020;18. Villa de Vallecas;183. Ensanche de Vallecas;48.872;43.398
+1 de enero de 2020;19. Vicálvaro;19. Vicálvaro;74.048;64.455
+1 de enero de 2020;19. Vicálvaro;191. Casco Histórico de Vicálvaro;35.666;28.223
+1 de enero de 2020;19. Vicálvaro;192. Valdebernardo;17.834;16.560
+1 de enero de 2020;19. Vicálvaro;193. Valderrivas;18.150;17.455
+1 de enero de 2020;19. Vicálvaro;194. El Cañaveral;2.398;2.217
+1 de enero de 2020;20. San Blas-Canillejas;20. San Blas-Canillejas;161.222;139.047
+1 de enero de 2020;20. San Blas-Canillejas;201. Simancas;28.698;23.332
+1 de enero de 2020;20. San Blas-Canillejas;202. Hellín;9.342;7.991
+1 de enero de 2020;20. San Blas-Canillejas;203. Amposta;8.874;7.199
+1 de enero de 2020;20. San Blas-Canillejas;204. Arcos;24.692;21.883
+1 de enero de 2020;20. San Blas-Canillejas;205. Rosas;31.794;29.908
+1 de enero de 2020;20. San Blas-Canillejas;206. Rejas;17.299;13.980
+1 de enero de 2020;20. San Blas-Canillejas;207. Canillejas;29.047;24.228
+1 de enero de 2020;20. San Blas-Canillejas;208. El Salvador;11.476;10.526
+1 de enero de 2020;21. Barajas;21. Barajas;50.010;44.957
+1 de enero de 2020;21. Barajas;211. Alameda de Osuna;19.820;18.579
+1 de enero de 2020;21. Barajas;212. Aeropuerto;1.900;1.462
+1 de enero de 2020;21. Barajas;213. Casco Histórico de Barajas;7.683;6.206
+1 de enero de 2020;21. Barajas;214. Timón;12.853;11.459
+1 de enero de 2020;21. Barajas;215. Corralejos;7.754;7.251
+1 de enero de 2021;01. Centro;01. Centro;141.236;104.726
+1 de enero de 2021;01. Centro;011. Palacio;23.584;18.923
+1 de enero de 2021;01. Centro;012. Embajadores;47.238;33.267
+1 de enero de 2021;01. Centro;013. Cortes;10.787;7.983
+1 de enero de 2021;01. Centro;014. Justicia;18.208;13.870
+1 de enero de 2021;01. Centro;015. Universidad;33.426;25.250
+1 de enero de 2021;01. Centro;016. Sol;7.993;5.433
+1 de enero de 2021;02. Arganzuela;02. Arganzuela;154.243;137.604
+1 de enero de 2021;02. Arganzuela;021. Imperial;22.596;20.807
+1 de enero de 2021;02. Arganzuela;022. Acacias;36.395;33.530
+1 de enero de 2021;02. Arganzuela;023. Chopera;20.077;17.215
+1 de enero de 2021;02. Arganzuela;024. Legazpi;19.572;18.101
+1 de enero de 2021;02. Arganzuela;025. Delicias;28.374;24.828
+1 de enero de 2021;02. Arganzuela;026. Palos de la Frontera;25.785;21.767
+1 de enero de 2021;02. Arganzuela;027. Atocha;1.444;1.356
+1 de enero de 2021;03. Retiro;03. Retiro;118.557;108.277
+1 de enero de 2021;03. Retiro;031. Pacífico;33.067;29.854
+1 de enero de 2021;03. Retiro;032. Adelfas;18.653;17.189
+1 de enero de 2021;03. Retiro;033. Estrella;23.051;21.954
+1 de enero de 2021;03. Retiro;034. Ibiza;21.558;18.811
+1 de enero de 2021;03. Retiro;035. Los Jerónimos;6.928;6.113
+1 de enero de 2021;03. Retiro;036. Niño Jesús;15.300;14.356
+1 de enero de 2021;04. Salamanca;04. Salamanca;146.016;124.068
+1 de enero de 2021;04. Salamanca;041. Recoletos;15.629;12.693
+1 de enero de 2021;04. Salamanca;042. Goya;29.479;24.768
+1 de enero de 2021;04. Salamanca;043. Fuente del Berro;20.963;18.207
+1 de enero de 2021;04. Salamanca;044. Guindalera;41.939;36.999
+1 de enero de 2021;04. Salamanca;045. Lista;20.864;17.528
+1 de enero de 2021;04. Salamanca;046. Castellana;17.142;13.873
+1 de enero de 2021;05. Chamartín;05. Chamartín;145.700;130.641
+1 de enero de 2021;05. Chamartín;051. El Viso;17.349;15.302
+1 de enero de 2021;05. Chamartín;052. Prosperidad;36.303;32.333
+1 de enero de 2021;05. Chamartín;053. Ciudad Jardín;18.618;16.248
+1 de enero de 2021;05. Chamartín;054. Hispanoamérica;31.642;29.084
+1 de enero de 2021;05. Chamartín;055. Nueva España;24.697;22.287
+1 de enero de 2021;05. Chamartín;056. Castilla;17.091;15.387
+1 de enero de 2021;06. Tetuán;06. Tetuán;159.849;127.202
+1 de enero de 2021;06. Tetuán;061. Bellas Vistas;29.465;22.276
+1 de enero de 2021;06. Tetuán;062. Cuatro Caminos;34.817;29.272
+1 de enero de 2021;06. Tetuán;063. Castillejos;20.541;17.278
+1 de enero de 2021;06. Tetuán;064. Almenara;22.738;18.991
+1 de enero de 2021;06. Tetuán;065. Valdeacederas;26.625;20.174
+1 de enero de 2021;06. Tetuán;066. Berruguete;25.663;19.211
+1 de enero de 2021;07. Chamberí;07. Chamberí;138.667;121.264
+1 de enero de 2021;07. Chamberí;071. Gaztambide;22.948;19.952
+1 de enero de 2021;07. Chamberí;072. Arapiles;24.260;21.176
+1 de enero de 2021;07. Chamberí;073. Trafalgar;24.628;21.003
+1 de enero de 2021;07. Chamberí;074. Almagro;19.546;16.690
+1 de enero de 2021;07. Chamberí;075. Ríos Rosas;27.216;23.933
+1 de enero de 2021;07. Chamberí;076. Vallehermoso;20.069;18.510
+1 de enero de 2021;08. Fuencarral-El Pardo;08. Fuencarral-El Pardo;247.692;224.865
+1 de enero de 2021;08. Fuencarral-El Pardo;081. El Pardo;3.443;3.271
+1 de enero de 2021;08. Fuencarral-El Pardo;082. Fuentelarreina;3.356;3.105
+1 de enero de 2021;08. Fuencarral-El Pardo;083. Peñagrande;44.383;40.645
+1 de enero de 2021;08. Fuencarral-El Pardo;084. Pilar;45.970;40.295
+1 de enero de 2021;08. Fuencarral-El Pardo;085. La Paz;33.005;31.108
+1 de enero de 2021;08. Fuencarral-El Pardo;086. Valverde;64.042;55.889
+1 de enero de 2021;08. Fuencarral-El Pardo;087. Mirasierra;34.565;32.762
+1 de enero de 2021;08. Fuencarral-El Pardo;088. El Goloso;18.928;17.790
+1 de enero de 2021;09. Moncloa-Aravaca;09. Moncloa-Aravaca;120.834;106.834
+1 de enero de 2021;09. Moncloa-Aravaca;091. Casa de Campo;13.066;11.761
+1 de enero de 2021;09. Moncloa-Aravaca;092. Argüelles;24.162;20.598
+1 de enero de 2021;09. Moncloa-Aravaca;093. Ciudad Universitaria;16.175;14.573
+1 de enero de 2021;09. Moncloa-Aravaca;094. Valdezarza;30.091;26.476
+1 de enero de 2021;09. Moncloa-Aravaca;095. Valdemarín;6.856;6.187
+1 de enero de 2021;09. Moncloa-Aravaca;096. El Plantío;2.916;2.599
+1 de enero de 2021;09. Moncloa-Aravaca;097. Aravaca;27.568;24.640
+1 de enero de 2021;10. Latina;10. Latina;240.155;197.563
+1 de enero de 2021;10. Latina;101. Los Cármenes;17.577;14.571
+1 de enero de 2021;10. Latina;102. Puerta del Ángel;41.982;32.876
+1 de enero de 2021;10. Latina;103. Lucero;36.576;29.651
+1 de enero de 2021;10. Latina;104. Aluche;66.968;54.838
+1 de enero de 2021;10. Latina;105. Campamento;19.579;15.321
+1 de enero de 2021;10. Latina;106. Cuatro Vientos;5.874;5.394
+1 de enero de 2021;10. Latina;107. Águilas;51.599;44.912
+1 de enero de 2021;11. Carabanchel;11. Carabanchel;258.633;202.322
+1 de enero de 2021;11. Carabanchel;111. Comillas;22.695;18.102
+1 de enero de 2021;11. Carabanchel;112. Opañel;33.656;25.818
+1 de enero de 2021;11. Carabanchel;113. San Isidro;39.728;30.992
+1 de enero de 2021;11. Carabanchel;114. Vista Alegre;47.082;35.354
+1 de enero de 2021;11. Carabanchel;115. Puerta Bonita;35.947;26.778
+1 de enero de 2021;11. Carabanchel;116. Buenavista;48.008;40.880
+1 de enero de 2021;11. Carabanchel;117. Abrantes;31.517;24.398
+1 de enero de 2021;12. Usera;12. Usera;142.454;107.442
+1 de enero de 2021;12. Usera;121. Orcasitas;23.095;20.731
+1 de enero de 2021;12. Usera;122. Orcasur;14.141;11.589
+1 de enero de 2021;12. Usera;123. San Fermín;23.838;18.852
+1 de enero de 2021;12. Usera;124. Almendrales;22.516;15.945
+1 de enero de 2021;12. Usera;125. Moscardó;26.623;18.716
+1 de enero de 2021;12. Usera;126. Zofío;14.336;10.463
+1 de enero de 2021;12. Usera;127. Pradolongo;17.905;11.146
+1 de enero de 2021;13. Puente de Vallecas;13. Puente de Vallecas;239.057;190.004
+1 de enero de 2021;13. Puente de Vallecas;131. Entrevías;35.239;28.945
+1 de enero de 2021;13. Puente de Vallecas;132. San Diego;43.574;29.326
+1 de enero de 2021;13. Puente de Vallecas;133. Palomeras Bajas;40.468;33.993
+1 de enero de 2021;13. Puente de Vallecas;134. Palomeras Sureste;42.924;37.036
+1 de enero de 2021;13. Puente de Vallecas;135. Portazgo;28.736;23.975
+1 de enero de 2021;13. Puente de Vallecas;136. Numancia;48.116;36.729
+1 de enero de 2021;14. Moratalaz;14. Moratalaz;93.810;83.780
+1 de enero de 2021;14. Moratalaz;141. Pavones;8.972;7.998
+1 de enero de 2021;14. Moratalaz;142. Horcajo;6.371;6.015
+1 de enero de 2021;14. Moratalaz;143. Marroquina;26.658;24.783
+1 de enero de 2021;14. Moratalaz;144. Media Legua;17.660;15.801
+1 de enero de 2021;14. Moratalaz;145. Fontarrón;17.290;14.488
+1 de enero de 2021;14. Moratalaz;146. Vinateros;16.859;14.695
+1 de enero de 2021;15. Ciudad Lineal;15. Ciudad Lineal;216.818;182.762
+1 de enero de 2021;15. Ciudad Lineal;151. Ventas;48.411;39.474
+1 de enero de 2021;15. Ciudad Lineal;152. Pueblo Nuevo;62.731;50.741
+1 de enero de 2021;15. Ciudad Lineal;153. Quintana;24.621;19.655
+1 de enero de 2021;15. Ciudad Lineal;154. Concepción;20.727;17.673
+1 de enero de 2021;15. Ciudad Lineal;155. San Pascual;17.823;16.194
+1 de enero de 2021;15. Ciudad Lineal;156. San Juan Bautista;12.484;11.147
+1 de enero de 2021;15. Ciudad Lineal;157. Colina;6.367;5.666
+1 de enero de 2021;15. Ciudad Lineal;158. Atalaya;1.580;1.392
+1 de enero de 2021;15. Ciudad Lineal;159. Costillares;22.074;20.820
+1 de enero de 2021;16. Hortaleza;16. Hortaleza;193.228;171.601
+1 de enero de 2021;16. Hortaleza;161. Palomas;6.891;6.124
+1 de enero de 2021;16. Hortaleza;162. Piovera;14.835;12.521
+1 de enero de 2021;16. Hortaleza;163. Canillas;40.281;36.232
+1 de enero de 2021;16. Hortaleza;164. Pinar del Rey;52.494;46.178
+1 de enero de 2021;16. Hortaleza;165. Apóstol Santiago;15.473;13.831
+1 de enero de 2021;16. Hortaleza;166. Valdefuentes;63.254;56.715
+1 de enero de 2021;17. Villaverde;17. Villaverde;154.808;121.023
+1 de enero de 2021;17. Villaverde;"171. Villaverde Alto, Casco Histórico de Villaverde";46.637;36.072
+1 de enero de 2021;17. Villaverde;172. San Cristóbal;16.986;10.814
+1 de enero de 2021;17. Villaverde;173. Butarque;20.722;17.651
+1 de enero de 2021;17. Villaverde;174. Los Rosales;37.790;29.901
+1 de enero de 2021;17. Villaverde;175. Ángeles;32.673;26.585
+1 de enero de 2021;18. Villa de Vallecas;18. Villa de Vallecas;114.733;98.611
+1 de enero de 2021;18. Villa de Vallecas;181. Casco Histórico de Vallecas;40.241;32.834
+1 de enero de 2021;18. Villa de Vallecas;182. Santa Eugenia;24.288;21.671
+1 de enero de 2021;18. Villa de Vallecas;183. Ensanche de Vallecas;50.204;44.106
+1 de enero de 2021;19. Vicálvaro;19. Vicálvaro;75.485;65.421
+1 de enero de 2021;19. Vicálvaro;191. Casco Histórico de Vicálvaro;35.548;27.906
+1 de enero de 2021;19. Vicálvaro;192. Valdebernardo;17.546;16.229
+1 de enero de 2021;19. Vicálvaro;193. Valderrivas;17.961;17.266
+1 de enero de 2021;19. Vicálvaro;194. El Cañaveral;4.430;4.020
+1 de enero de 2021;20. San Blas-Canillejas;20. San Blas-Canillejas;160.258;137.348
+1 de enero de 2021;20. San Blas-Canillejas;201. Simancas;28.451;22.946
+1 de enero de 2021;20. San Blas-Canillejas;202. Hellín;9.359;7.836
+1 de enero de 2021;20. San Blas-Canillejas;203. Amposta;8.885;7.121
+1 de enero de 2021;20. San Blas-Canillejas;204. Arcos;24.642;21.721
+1 de enero de 2021;20. San Blas-Canillejas;205. Rosas;31.534;29.566
+1 de enero de 2021;20. San Blas-Canillejas;206. Rejas;17.098;13.896
+1 de enero de 2021;20. San Blas-Canillejas;207. Canillejas;28.925;23.915
+1 de enero de 2021;20. San Blas-Canillejas;208. El Salvador;11.364;10.347
+1 de enero de 2021;21. Barajas;21. Barajas;50.077;44.939
+1 de enero de 2021;21. Barajas;211. Alameda de Osuna;19.657;18.394
+1 de enero de 2021;21. Barajas;212. Aeropuerto;1.918;1.481
+1 de enero de 2021;21. Barajas;213. Casco Histórico de Barajas;7.504;6.030
+1 de enero de 2021;21. Barajas;214. Timón;13.334;11.874
+1 de enero de 2021;21. Barajas;215. Corralejos;7.664;7.160
+1 de enero de 2022;01. Centro;01. Centro;139.682;102.496
+1 de enero de 2022;01. Centro;011. Palacio;23.417;18.568
+1 de enero de 2022;01. Centro;012. Embajadores;46.444;32.633
+1 de enero de 2022;01. Centro;013. Cortes;10.828;7.846
+1 de enero de 2022;01. Centro;014. Justicia;18.015;13.521
+1 de enero de 2022;01. Centro;015. Universidad;32.861;24.542
+1 de enero de 2022;01. Centro;016. Sol;8.117;5.386
+1 de enero de 2022;02. Arganzuela;02. Arganzuela;152.638;136.363
+1 de enero de 2022;02. Arganzuela;021. Imperial;22.456;20.658
+1 de enero de 2022;02. Arganzuela;022. Acacias;36.038;33.249
+1 de enero de 2022;02. Arganzuela;023. Chopera;19.734;17.004
+1 de enero de 2022;02. Arganzuela;024. Legazpi;19.469;17.970
+1 de enero de 2022;02. Arganzuela;025. Delicias;28.243;24.783
+1 de enero de 2022;02. Arganzuela;026. Palos de la Frontera;25.078;21.216
+1 de enero de 2022;02. Arganzuela;027. Atocha;1.620;1.483
+1 de enero de 2022;03. Retiro;03. Retiro;117.672;107.291
+1 de enero de 2022;03. Retiro;031. Pacífico;32.745;29.548
+1 de enero de 2022;03. Retiro;032. Adelfas;18.715;17.186
+1 de enero de 2022;03. Retiro;033. Estrella;22.780;21.731
+1 de enero de 2022;03. Retiro;034. Ibiza;21.377;18.584
+1 de enero de 2022;03. Retiro;035. Los Jerónimos;6.926;6.033
+1 de enero de 2022;03. Retiro;036. Niño Jesús;15.129;14.209
+1 de enero de 2022;04. Salamanca;04. Salamanca;145.457;122.775
+1 de enero de 2022;04. Salamanca;041. Recoletos;15.647;12.515
+1 de enero de 2022;04. Salamanca;042. Goya;29.441;24.555
+1 de enero de 2022;04. Salamanca;043. Fuente del Berro;20.848;18.086
+1 de enero de 2022;04. Salamanca;044. Guindalera;41.721;36.662
+1 de enero de 2022;04. Salamanca;045. Lista;20.785;17.311
+1 de enero de 2022;04. Salamanca;046. Castellana;17.015;13.646
+1 de enero de 2022;05. Chamartín;05. Chamartín;144.371;129.521
+1 de enero de 2022;05. Chamartín;051. El Viso;17.181;15.241
+1 de enero de 2022;05. Chamartín;052. Prosperidad;35.963;32.025
+1 de enero de 2022;05. Chamartín;053. Ciudad Jardín;18.410;16.058
+1 de enero de 2022;05. Chamartín;054. Hispanoamérica;31.463;28.929
+1 de enero de 2022;05. Chamartín;055. Nueva España;24.366;22.020
+1 de enero de 2022;05. Chamartín;056. Castilla;16.988;15.248
+1 de enero de 2022;06. Tetuán;06. Tetuán;157.433;125.574
+1 de enero de 2022;06. Tetuán;061. Bellas Vistas;28.995;21.983
+1 de enero de 2022;06. Tetuán;062. Cuatro Caminos;34.471;28.857
+1 de enero de 2022;06. Tetuán;063. Castillejos;20.282;17.057
+1 de enero de 2022;06. Tetuán;064. Almenara;22.594;18.827
+1 de enero de 2022;06. Tetuán;065. Valdeacederas;26.140;20.019
+1 de enero de 2022;06. Tetuán;066. Berruguete;24.951;18.831
+1 de enero de 2022;07. Chamberí;07. Chamberí;137.287;119.771
+1 de enero de 2022;07. Chamberí;071. Gaztambide;22.659;19.688
+1 de enero de 2022;07. Chamberí;072. Arapiles;23.972;20.902
+1 de enero de 2022;07. Chamberí;073. Trafalgar;24.495;20.723
+1 de enero de 2022;07. Chamberí;074. Almagro;19.358;16.480
+1 de enero de 2022;07. Chamberí;075. Ríos Rosas;26.901;23.594
+1 de enero de 2022;07. Chamberí;076. Vallehermoso;19.902;18.384
+1 de enero de 2022;08. Fuencarral-El Pardo;08. Fuencarral-El Pardo;246.281;224.166
+1 de enero de 2022;08. Fuencarral-El Pardo;081. El Pardo;3.382;3.219
+1 de enero de 2022;08. Fuencarral-El Pardo;082. Fuentelarreina;3.346;3.112
+1 de enero de 2022;08. Fuencarral-El Pardo;083. Peñagrande;43.887;40.440
+1 de enero de 2022;08. Fuencarral-El Pardo;084. Pilar;45.354;39.792
+1 de enero de 2022;08. Fuencarral-El Pardo;085. La Paz;32.346;30.635
+1 de enero de 2022;08. Fuencarral-El Pardo;086. Valverde;63.651;55.633
+1 de enero de 2022;08. Fuencarral-El Pardo;087. Mirasierra;35.240;33.453
+1 de enero de 2022;08. Fuencarral-El Pardo;088. El Goloso;19.075;17.882
+1 de enero de 2022;09. Moncloa-Aravaca;09. Moncloa-Aravaca;120.360;106.731
+1 de enero de 2022;09. Moncloa-Aravaca;091. Casa de Campo;12.804;11.673
+1 de enero de 2022;09. Moncloa-Aravaca;092. Argüelles;24.165;20.493
+1 de enero de 2022;09. Moncloa-Aravaca;093. Ciudad Universitaria;16.220;14.671
+1 de enero de 2022;09. Moncloa-Aravaca;094. Valdezarza;29.802;26.325
+1 de enero de 2022;09. Moncloa-Aravaca;095. Valdemarín;7.048;6.431
+1 de enero de 2022;09. Moncloa-Aravaca;096. El Plantío;2.998;2.674
+1 de enero de 2022;09. Moncloa-Aravaca;097. Aravaca;27.323;24.464
+1 de enero de 2022;10. Latina;10. Latina;237.048;195.604
+1 de enero de 2022;10. Latina;101. Los Cármenes;17.543;14.487
+1 de enero de 2022;10. Latina;102. Puerta del Ángel;41.401;32.470
+1 de enero de 2022;10. Latina;103. Lucero;36.062;29.440
+1 de enero de 2022;10. Latina;104. Aluche;65.833;54.255
+1 de enero de 2022;10. Latina;105. Campamento;19.337;15.123
+1 de enero de 2022;10. Latina;106. Cuatro Vientos;5.966;5.373
+1 de enero de 2022;10. Latina;107. Águilas;50.906;44.456
+1 de enero de 2022;11. Carabanchel;11. Carabanchel;255.514;200.573
+1 de enero de 2022;11. Carabanchel;111. Comillas;22.214;17.830
+1 de enero de 2022;11. Carabanchel;112. Opañel;33.300;25.529
+1 de enero de 2022;11. Carabanchel;113. San Isidro;39.391;30.868
+1 de enero de 2022;11. Carabanchel;114. Vista Alegre;46.474;35.020
+1 de enero de 2022;11. Carabanchel;115. Puerta Bonita;35.395;26.529
+1 de enero de 2022;11. Carabanchel;116. Buenavista;47.815;40.775
+1 de enero de 2022;11. Carabanchel;117. Abrantes;30.925;24.022
+1 de enero de 2022;12. Usera;12. Usera;140.808;107.113
+1 de enero de 2022;12. Usera;121. Orcasitas;22.996;20.648
+1 de enero de 2022;12. Usera;122. Orcasur;14.250;11.657
+1 de enero de 2022;12. Usera;123. San Fermín;23.460;18.670
+1 de enero de 2022;12. Usera;124. Almendrales;22.499;16.138
+1 de enero de 2022;12. Usera;125. Moscardó;26.139;18.626
+1 de enero de 2022;12. Usera;126. Zofío;14.022;10.319
+1 de enero de 2022;12. Usera;127. Pradolongo;17.442;11.055
+1 de enero de 2022;13. Puente de Vallecas;13. Puente de Vallecas;235.638;187.981
+1 de enero de 2022;13. Puente de Vallecas;131. Entrevías;34.690;28.521
+1 de enero de 2022;13. Puente de Vallecas;132. San Diego;42.910;29.233
+1 de enero de 2022;13. Puente de Vallecas;133. Palomeras Bajas;39.935;33.703
+1 de enero de 2022;13. Puente de Vallecas;134. Palomeras Sureste;42.540;36.665
+1 de enero de 2022;13. Puente de Vallecas;135. Portazgo;28.249;23.627
+1 de enero de 2022;13. Puente de Vallecas;136. Numancia;47.314;36.232
+1 de enero de 2022;14. Moratalaz;14. Moratalaz;92.390;82.516
+1 de enero de 2022;14. Moratalaz;141. Pavones;8.719;7.826
+1 de enero de 2022;14. Moratalaz;142. Horcajo;6.354;5.912
+1 de enero de 2022;14. Moratalaz;143. Marroquina;26.297;24.486
+1 de enero de 2022;14. Moratalaz;144. Media Legua;17.377;15.535
+1 de enero de 2022;14. Moratalaz;145. Fontarrón;17.044;14.287
+1 de enero de 2022;14. Moratalaz;146. Vinateros;16.599;14.470
+1 de enero de 2022;15. Ciudad Lineal;15. Ciudad Lineal;213.905;180.541
+1 de enero de 2022;15. Ciudad Lineal;151. Ventas;47.801;38.960
+1 de enero de 2022;15. Ciudad Lineal;152. Pueblo Nuevo;61.935;50.172
+1 de enero de 2022;15. Ciudad Lineal;153. Quintana;24.183;19.333
+1 de enero de 2022;15. Ciudad Lineal;154. Concepción;20.440;17.446
+1 de enero de 2022;15. Ciudad Lineal;155. San Pascual;17.546;15.950
+1 de enero de 2022;15. Ciudad Lineal;156. San Juan Bautista;12.287;11.006
+1 de enero de 2022;15. Ciudad Lineal;157. Colina;6.338;5.645
+1 de enero de 2022;15. Ciudad Lineal;158. Atalaya;1.607;1.419
+1 de enero de 2022;15. Ciudad Lineal;159. Costillares;21.768;20.610
+1 de enero de 2022;16. Hortaleza;16. Hortaleza;195.017;172.954
+1 de enero de 2022;16. Hortaleza;161. Palomas;6.933;6.147
+1 de enero de 2022;16. Hortaleza;162. Piovera;14.948;12.493
+1 de enero de 2022;16. Hortaleza;163. Canillas;39.708;35.741
+1 de enero de 2022;16. Hortaleza;164. Pinar del Rey;51.844;45.555
+1 de enero de 2022;16. Hortaleza;165. Apóstol Santiago;15.374;13.751
+1 de enero de 2022;16. Hortaleza;166. Valdefuentes;66.210;59.267
+1 de enero de 2022;17. Villaverde;17. Villaverde;153.829;120.621
+1 de enero de 2022;17. Villaverde;"171. Villaverde Alto, Casco Histórico de Villaverde";46.156;35.797
+1 de enero de 2022;17. Villaverde;172. San Cristóbal;16.640;10.691
+1 de enero de 2022;17. Villaverde;173. Butarque;20.813;17.802
+1 de enero de 2022;17. Villaverde;174. Los Rosales;37.319;29.602
+1 de enero de 2022;17. Villaverde;175. Ángeles;32.901;26.729
+1 de enero de 2022;18. Villa de Vallecas;18. Villa de Vallecas;114.817;98.442
+1 de enero de 2022;18. Villa de Vallecas;181. Casco Histórico de Vallecas;39.578;32.391
+1 de enero de 2022;18. Villa de Vallecas;182. Santa Eugenia;24.110;21.455
+1 de enero de 2022;18. Villa de Vallecas;183. Ensanche de Vallecas;51.129;44.596
+1 de enero de 2022;19. Vicálvaro;19. Vicálvaro;79.328;68.760
+1 de enero de 2022;19. Vicálvaro;191. Casco Histórico de Vicálvaro;35.086;27.650
+1 de enero de 2022;19. Vicálvaro;192. Valdebernardo;17.431;16.020
+1 de enero de 2022;19. Vicálvaro;193. Valderrivas;17.867;17.158
+1 de enero de 2022;19. Vicálvaro;194. El Cañaveral;8.944;7.932
+1 de enero de 2022;20. San Blas-Canillejas;20. San Blas-Canillejas;158.783;136.070
+1 de enero de 2022;20. San Blas-Canillejas;201. Simancas;28.171;22.731
+1 de enero de 2022;20. San Blas-Canillejas;202. Hellín;9.274;7.707
+1 de enero de 2022;20. San Blas-Canillejas;203. Amposta;8.710;6.918
+1 de enero de 2022;20. San Blas-Canillejas;204. Arcos;24.960;22.045
+1 de enero de 2022;20. San Blas-Canillejas;205. Rosas;30.887;29.042
+1 de enero de 2022;20. San Blas-Canillejas;206. Rejas;16.971;13.831
+1 de enero de 2022;20. San Blas-Canillejas;207. Canillejas;28.541;23.565
+1 de enero de 2022;20. San Blas-Canillejas;208. El Salvador;11.269;10.231
+1 de enero de 2022;21. Barajas;21. Barajas;48.404;43.541
+1 de enero de 2022;21. Barajas;211. Alameda de Osuna;19.662;18.358
+1 de enero de 2022;21. Barajas;212. Aeropuerto;1.895;1.468
+1 de enero de 2022;21. Barajas;213. Casco Histórico de Barajas;7.351;5.935
+1 de enero de 2022;21. Barajas;214. Timón;11.895;10.685
+1 de enero de 2022;21. Barajas;215. Corralejos;7.601;7.095
+1 de enero de 2024;01. Centro;01. Centro;145.411;101.702
+1 de enero de 2024;01. Centro;011. Palacio;24.332;18.551
+1 de enero de 2024;01. Centro;012. Embajadores;48.590;32.442
+1 de enero de 2024;01. Centro;013. Cortes;11.171;7.743
+1 de enero de 2024;01. Centro;014. Justicia;18.739;13.287
+1 de enero de 2024;01. Centro;015. Universidad;34.073;24.385
+1 de enero de 2024;01. Centro;016. Sol;8.506;5.294
+1 de enero de 2024;02. Arganzuela;02. Arganzuela;156.559;137.040
+1 de enero de 2024;02. Arganzuela;021. Imperial;22.668;20.422
+1 de enero de 2024;02. Arganzuela;022. Acacias;36.475;33.124
+1 de enero de 2024;02. Arganzuela;023. Chopera;20.256;17.036
+1 de enero de 2024;02. Arganzuela;024. Legazpi;19.858;18.130
+1 de enero de 2024;02. Arganzuela;025. Delicias;29.465;25.261
+1 de enero de 2024;02. Arganzuela;026. Palos de la Frontera;25.790;21.269
+1 de enero de 2024;02. Arganzuela;027. Atocha;2.047;1.798
+1 de enero de 2024;03. Retiro;03. Retiro;119.757;106.816
+1 de enero de 2024;03. Retiro;031. Pacífico;33.743;29.745
+1 de enero de 2024;03. Retiro;032. Adelfas;19.025;17.242
+1 de enero de 2024;03. Retiro;033. Estrella;22.774;21.467
+1 de enero de 2024;03. Retiro;034. Ibiza;22.010;18.364
+1 de enero de 2024;03. Retiro;035. Los Jerónimos;6.934;5.860
+1 de enero de 2024;03. Retiro;036. Niño Jesús;15.271;14.138
+1 de enero de 2024;04. Salamanca;04. Salamanca;149.778;121.695
+1 de enero de 2024;04. Salamanca;041. Recoletos;15.845;12.109
+1 de enero de 2024;04. Salamanca;042. Goya;30.381;24.281
+1 de enero de 2024;04. Salamanca;043. Fuente del Berro;21.449;18.082
+1 de enero de 2024;04. Salamanca;044. Guindalera;42.905;36.818
+1 de enero de 2024;04. Salamanca;045. Lista;21.506;17.125
+1 de enero de 2024;04. Salamanca;046. Castellana;17.692;13.280
+1 de enero de 2024;05. Chamartín;05. Chamartín;148.111;129.859
+1 de enero de 2024;05. Chamartín;051. El Viso;17.545;15.263
+1 de enero de 2024;05. Chamartín;052. Prosperidad;36.961;32.130
+1 de enero de 2024;05. Chamartín;053. Ciudad Jardín;18.928;16.070
+1 de enero de 2024;05. Chamartín;054. Hispanoamérica;32.014;28.953
+1 de enero de 2024;05. Chamartín;055. Nueva España;25.043;22.175
+1 de enero de 2024;05. Chamartín;056. Castilla;17.620;15.268
+1 de enero de 2024;06. Tetuán;06. Tetuán;166.211;127.229
+1 de enero de 2024;06. Tetuán;061. Bellas Vistas;30.531;22.203
+1 de enero de 2024;06. Tetuán;062. Cuatro Caminos;35.723;29.061
+1 de enero de 2024;06. Tetuán;063. Castillejos;21.256;17.302
+1 de enero de 2024;06. Tetuán;064. Almenara;24.090;18.985
+1 de enero de 2024;06. Tetuán;065. Valdeacederas;27.798;20.351
+1 de enero de 2024;06. Tetuán;066. Berruguete;26.813;19.327
+1 de enero de 2024;07. Chamberí;07. Chamberí;141.984;119.695
+1 de enero de 2024;07. Chamberí;071. Gaztambide;23.533;19.676
+1 de enero de 2024;07. Chamberí;072. Arapiles;24.931;21.101
+1 de enero de 2024;07. Chamberí;073. Trafalgar;25.328;20.536
+1 de enero de 2024;07. Chamberí;074. Almagro;19.992;16.385
+1 de enero de 2024;07. Chamberí;075. Ríos Rosas;27.962;23.772
+1 de enero de 2024;07. Chamberí;076. Vallehermoso;20.238;18.225
+1 de enero de 2024;08. Fuencarral-El Pardo;08. Fuencarral-El Pardo;253.898;226.207
+1 de enero de 2024;08. Fuencarral-El Pardo;081. El Pardo;3.460;3.259
+1 de enero de 2024;08. Fuencarral-El Pardo;082. Fuentelarreina;3.498;3.226
+1 de enero de 2024;08. Fuencarral-El Pardo;083. Peñagrande;44.844;40.688
+1 de enero de 2024;08. Fuencarral-El Pardo;084. Pilar;46.543;39.590
+1 de enero de 2024;08. Fuencarral-El Pardo;085. La Paz;32.343;30.329
+1 de enero de 2024;08. Fuencarral-El Pardo;086. Valverde;66.870;56.164
+1 de enero de 2024;08. Fuencarral-El Pardo;087. Mirasierra;36.744;34.717
+1 de enero de 2024;08. Fuencarral-El Pardo;088. El Goloso;19.596;18.234
+1 de enero de 2024;09. Moncloa-Aravaca;09. Moncloa-Aravaca;125.223;108.522
+1 de enero de 2024;09. Moncloa-Aravaca;091. Casa de Campo;12.946;11.646
+1 de enero de 2024;09. Moncloa-Aravaca;092. Argüelles;24.987;20.435
+1 de enero de 2024;09. Moncloa-Aravaca;093. Ciudad Universitaria;16.876;14.881
+1 de enero de 2024;09. Moncloa-Aravaca;094. Valdezarza;31.614;27.100
+1 de enero de 2024;09. Moncloa-Aravaca;095. Valdemarín;7.451;6.715
+1 de enero de 2024;09. Moncloa-Aravaca;096. El Plantío;3.156;2.795
+1 de enero de 2024;09. Moncloa-Aravaca;097. Aravaca;28.193;24.950
+1 de enero de 2024;10. Latina;10. Latina;250.396;197.424
+1 de enero de 2024;10. Latina;101. Los Cármenes;18.423;14.634
+1 de enero de 2024;10. Latina;102. Puerta del Ángel;45.513;34.004
+1 de enero de 2024;10. Latina;103. Lucero;38.072;29.413
+1 de enero de 2024;10. Latina;104. Aluche;68.973;54.333
+1 de enero de 2024;10. Latina;105. Campamento;20.657;15.254
+1 de enero de 2024;10. Latina;106. Cuatro Vientos;6.417;5.591
+1 de enero de 2024;10. Latina;107. Águilas;52.341;44.195
+1 de enero de 2024;11. Carabanchel;11. Carabanchel;274.406;203.602
+1 de enero de 2024;11. Carabanchel;111. Comillas;23.466;18.099
+1 de enero de 2024;11. Carabanchel;112. Opañel;35.513;25.821
+1 de enero de 2024;11. Carabanchel;113. San Isidro;42.184;31.191
+1 de enero de 2024;11. Carabanchel;114. Vista Alegre;50.153;35.440
+1 de enero de 2024;11. Carabanchel;115. Puerta Bonita;38.781;27.006
+1 de enero de 2024;11. Carabanchel;116. Buenavista;51.040;41.793
+1 de enero de 2024;11. Carabanchel;117. Abrantes;33.269;24.252
+1 de enero de 2024;12. Usera;12. Usera;149.113;107.421
+1 de enero de 2024;12. Usera;121. Orcasitas;23.482;20.544
+1 de enero de 2024;12. Usera;122. Orcasur;14.851;11.534
+1 de enero de 2024;12. Usera;123. San Fermín;24.510;18.783
+1 de enero de 2024;12. Usera;124. Almendrales;23.927;16.279
+1 de enero de 2024;12. Usera;125. Moscardó;27.873;18.736
+1 de enero de 2024;12. Usera;126. Zofío;15.298;10.398
+1 de enero de 2024;12. Usera;127. Pradolongo;19.172;11.147
+1 de enero de 2024;13. Puente de Vallecas;13. Puente de Vallecas;253.048;190.208
+1 de enero de 2024;13. Puente de Vallecas;131. Entrevías;36.851;28.815
+1 de enero de 2024;13. Puente de Vallecas;132. San Diego;49.339;30.893
+1 de enero de 2024;13. Puente de Vallecas;133. Palomeras Bajas;41.755;33.602
+1 de enero de 2024;13. Puente de Vallecas;134. Palomeras Sureste;44.396;36.894
+1 de enero de 2024;13. Puente de Vallecas;135. Portazgo;29.746;23.674
+1 de enero de 2024;13. Puente de Vallecas;136. Numancia;50.961;36.330
+1 de enero de 2024;14. Moratalaz;14. Moratalaz;95.123;81.880
+1 de enero de 2024;14. Moratalaz;141. Pavones;9.208;7.742
+1 de enero de 2024;14. Moratalaz;142. Horcajo;6.421;5.823
+1 de enero de 2024;14. Moratalaz;143. Marroquina;26.378;24.031
+1 de enero de 2024;14. Moratalaz;144. Media Legua;17.787;15.430
+1 de enero de 2024;14. Moratalaz;145. Fontarrón;18.000;14.380
+1 de enero de 2024;14. Moratalaz;146. Vinateros;17.329;14.474
+1 de enero de 2024;15. Ciudad Lineal;15. Ciudad Lineal;230.035;186.354
+1 de enero de 2024;15. Ciudad Lineal;151. Ventas;52.223;40.821
+1 de enero de 2024;15. Ciudad Lineal;152. Pueblo Nuevo;65.874;50.757
+1 de enero de 2024;15. Ciudad Lineal;153. Quintana;26.762;20.256
+1 de enero de 2024;15. Ciudad Lineal;154. Concepción;22.256;18.239
+1 de enero de 2024;15. Ciudad Lineal;155. San Pascual;19.019;16.686
+1 de enero de 2024;15. Ciudad Lineal;156. San Juan Bautista;13.120;11.498
+1 de enero de 2024;15. Ciudad Lineal;157. Colina;6.810;5.902
+1 de enero de 2024;15. Ciudad Lineal;158. Atalaya;1.672;1.455
+1 de enero de 2024;15. Ciudad Lineal;159. Costillares;22.299;20.740
+1 de enero de 2024;16. Hortaleza;16. Hortaleza;205.182;177.056
+1 de enero de 2024;16. Hortaleza;161. Palomas;7.018;6.244
+1 de enero de 2024;16. Hortaleza;162. Piovera;15.455;12.574
+1 de enero de 2024;16. Hortaleza;163. Canillas;40.440;35.365
+1 de enero de 2024;16. Hortaleza;164. Pinar del Rey;53.313;45.244
+1 de enero de 2024;16. Hortaleza;165. Apóstol Santiago;15.842;13.770
+1 de enero de 2024;16. Hortaleza;166. Valdefuentes;73.114;63.859
+1 de enero de 2024;17. Villaverde;17. Villaverde;167.952;123.806
+1 de enero de 2024;17. Villaverde;"171. Villaverde Alto, Casco Histórico de Villaverde";50.266;36.554
+1 de enero de 2024;17. Villaverde;172. San Cristóbal;18.870;11.052
+1 de enero de 2024;17. Villaverde;173. Butarque;22.375;18.434
+1 de enero de 2024;17. Villaverde;174. Los Rosales;39.648;29.806
+1 de enero de 2024;17. Villaverde;175. Ángeles;36.793;27.960
+1 de enero de 2024;18. Villa de Vallecas;18. Villa de Vallecas;122.337;101.340
+1 de enero de 2024;18. Villa de Vallecas;181. Casco Histórico de Vallecas;41.984;32.689
+1 de enero de 2024;18. Villa de Vallecas;182. Santa Eugenia;24.168;21.165
+1 de enero de 2024;18. Villa de Vallecas;183. Ensanche de Vallecas;56.185;47.486
+1 de enero de 2024;19. Vicálvaro;19. Vicálvaro;89.772;75.231
+1 de enero de 2024;19. Vicálvaro;191. Casco Histórico de Vicálvaro;37.018;27.846
+1 de enero de 2024;19. Vicálvaro;192. Valdebernardo;17.693;15.730
+1 de enero de 2024;19. Vicálvaro;193. Valderrivas;17.868;16.947
+1 de enero de 2024;19. Vicálvaro;194. El Cañaveral;17.193;14.708
+1 de enero de 2024;20. San Blas-Canillejas;20. San Blas-Canillejas;166.583;136.455
+1 de enero de 2024;20. San Blas-Canillejas;201. Simancas;30.158;22.867
+1 de enero de 2024;20. San Blas-Canillejas;202. Hellín;9.965;7.802
+1 de enero de 2024;20. San Blas-Canillejas;203. Amposta;9.749;7.070
+1 de enero de 2024;20. San Blas-Canillejas;204. Arcos;26.280;22.146
+1 de enero de 2024;20. San Blas-Canillejas;205. Rosas;30.838;28.566
+1 de enero de 2024;20. San Blas-Canillejas;206. Rejas;18.196;14.338
+1 de enero de 2024;20. San Blas-Canillejas;207. Canillejas;29.943;23.487
+1 de enero de 2024;20. San Blas-Canillejas;208. El Salvador;11.454;10.179
+1 de enero de 2024;21. Barajas;21. Barajas;49.612;43.869
+1 de enero de 2024;21. Barajas;211. Alameda de Osuna;19.875;18.300
+1 de enero de 2024;21. Barajas;212. Aeropuerto;1.949;1.449
+1 de enero de 2024;21. Barajas;213. Casco Histórico de Barajas;7.625;5.979
+1 de enero de 2024;21. Barajas;214. Timón;12.400;10.992
+1 de enero de 2024;21. Barajas;215. Corralejos;7.763;7.149

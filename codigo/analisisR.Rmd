@@ -1,0 +1,1243 @@
+---
+title: "TFM Gentrificación en los barrios de Madrid"
+author: "Jorge Gonzalez Moran"
+output:
+  html_document:
+    toc: yes
+    number_sections: yes
+    toc_depth: 2
+  pdf_document: 
+    toc: yes
+    toc_depth: '2'
+    keep_tex: yes
+subtitle: "Análisis de la situación y predicción de barrios en riesgo"
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+
+> Librerias
+
+```{r,eval=TRUE,echo=TRUE}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(factoextra)
+library(reshape2)
+library(ggcorrplot)
+library(stringr)
+library(sf)
+library(stringr)
+library(tidyr)
+```
+# Preprocesado
+
+
+> Carga del fichero de datos 
+
+
+
+```{r,eval=TRUE,echo=TRUE}
+indicadores_distritros_barrios<-read.csv("../datos/panel_indicadores_distritos_barrios.csv", sep=";", na.strings="NA")
+str(indicadores_distritros_barrios)
+```
+En el dataset existen 18 variables con un total de 86372 observaciones. 
+Observo las diferentes variables.
+
+```{r,eval=TRUE,echo=TRUE}
+names(indicadores_distritros_barrios)
+```
+Elimino espacios iniciales y finales en los valores de nombre de *distrito* y *barrio*, asi como en *indicador_completo*
+
+```{r,eval=TRUE,echo=TRUE}
+variables_de_interes <- c('distrito', 'barrio', 'indicador_completo')
+for (variable in variables_de_interes) {
+  indicadores_distritros_barrios[variable] <- lapply(indicadores_distritros_barrios[variable],trimws)
+}
+```
+
+
+
+Observo que los primeros resultados de indicadores no tienen los espacios:
+
+```{r,eval=TRUE,echo=TRUE}
+head(unique(indicadores_distritros_barrios$indicador_completo),20)
+```
+
+El estudio utilizará información relativa a los años 2019 a 2023. Compruebo que existe información para ese periodo:
+```{r,eval=TRUE,echo=TRUE}
+cat('\n Periodo del dataset: ', sort(unique(indicadores_distritros_barrios$año)))
+```
+
+## Distritos y barrios
+
+Consulto la información de distritos. Coincide el número de códigos con el número de nombres:
+```{r,eval=TRUE,echo=TRUE}
+unique(indicadores_distritros_barrios$cod_distrito)
+unique(indicadores_distritros_barrios$distrito)
+```
+
+
+Repito el análisis con los barrios:
+
+```{r,eval=TRUE,echo=TRUE}
+length(unique(indicadores_distritros_barrios$cod_barrio))
+length(unique(indicadores_distritros_barrios$barrio))
+
+```
+
+No coincide el número de nombres con el codigo de barrios. Busco los valores repetidos: 
+```{r,eval=TRUE,echo=TRUE}
+combinacion_barrio_codigo <- unique(indicadores_distritros_barrios[, c('cod_barrio', 'barrio')])
+combinacion_barrio_codigo[duplicated(combinacion_barrio_codigo$cod_barrio),]  %>%
+  arrange(cod_barrio)
+combinacion_barrio_codigo[duplicated(combinacion_barrio_codigo$barrio),]  %>%
+  arrange(barrio)
+ 
+```
+
+
+El nombre de los barrios se cargará de otro dataset especifico. Para el tratamiento de los datos se usará el codigo. 
+
+```{r,eval=TRUE,echo=TRUE}
+df_nombre_distristros_barrios<-read.csv("../datos/barrios.csv", sep=";", na.strings="NA", fileEncoding="UTF-8")
+str(df_nombre_distristros_barrios)
+```
+```{r,eval=TRUE,echo=TRUE}
+df_nombre_distristros_barrios <- df_nombre_distristros_barrios %>%
+  select(c(1:4))  %>%
+  rename(
+    cod_distrito = CODDIS,
+    distrito = NOMDIS,
+    cod_barrio = COD_BAR,
+    barrio = NOMBRE
+  ) %>%
+  mutate(cod_distrito = as.numeric(cod_distrito),
+         cod_barrio = as.numeric(cod_barrio))
+
+str(df_nombre_distristros_barrios)
+```
+
+Elimino los datos globales de ciudad madrid y de los distritos.
+
+
+```{r,eval=TRUE,echo=TRUE}
+indicadores_distritros_barrios <- indicadores_distritros_barrios[!is.na(indicadores_distritros_barrios$cod_barrio),] 
+
+# comprobacion de nulos 
+sum(is.na(indicadores_distritros_barrios$cod_distrito))
+sum(is.na(indicadores_distritros_barrios$cod_barrio))
+```
+
+
+## Poblacion total por barrio
+
+El dato de población por barrio es necesario para el cálculo de otros indicadores. Por eso en primer lugar genero conjunto de datos con esa información. En la fuente de datos, el indicador **Número Habitantes** contiene el total de habitantes para cada registro. 
+
+```{r,eval=TRUE,echo=TRUE}
+indicador = "Número Habitantes"
+variables_seleccionadas <- c("año","cod_distrito", "cod_barrio", "valor_indicador")
+df_poblacion_distritos_barrios <- indicadores_distritros_barrios[indicadores_distritros_barrios$indicador_completo == indicador,variables_seleccionadas]
+
+
+df_poblacion_distritos_barrios <- rename(df_poblacion_distritos_barrios,poblacion=valor_indicador)
+df_poblacion_distritos_barrios$poblacion <- as.numeric(gsub("\\.", "", df_poblacion_distritos_barrios$poblacion))
+rownames(df_poblacion_distritos_barrios) <- NULL
+
+str(df_poblacion_distritos_barrios)
+
+datos_por_año <- df_poblacion_distritos_barrios %>%
+  group_by(año) %>%
+  summarise(total = n(), .groups = "drop") 
+
+datos_por_año
+```
+
+
+Hay un error en los datos de población. No aparece información del año 2020 y existen registro repetidos para el año 2023. El segundo dato de 2023 corresponde al año 2024. Además se debe restar un año a partir de 2020 
+```{r,eval=TRUE,echo=TRUE}
+
+df_poblacion_distritos_barrios <- df_poblacion_distritos_barrios[] %>%
+  arrange(cod_distrito, cod_barrio, año) %>% # Ordenación por cod_distrito, cod_barrio y año
+  group_by(cod_distrito, cod_barrio) %>%     # Agrupación por distrito y barrio
+  mutate(
+    row_num = row_number(), 
+    año = if_else(row_num %in% c(5) & lag(año) == año, año + 1, año),  # correccion de años erróneos
+  ) %>%
+  ungroup() %>% 
+  select(-row_num) # elimina fila de numeración
+
+# corrección a partir del año 2020
+df_poblacion_distritos_barrios$año[ df_poblacion_distritos_barrios$año>2019] <-  df_poblacion_distritos_barrios$año[ df_poblacion_distritos_barrios$año>2019]-1
+
+
+
+cat('información de años:\t\t', unique(df_poblacion_distritos_barrios$año))
+cat('\ninformación de nº de barrios:\t', length(unique(df_poblacion_distritos_barrios$cod_barrio)))
+cat('\ninformación de distritos:\t', sort(unique(df_poblacion_distritos_barrios$cod_distrito)))
+cat('\nFilas sin datos:\t\t', sum(is.na(df_poblacion_distritos_barrios)))
+
+
+datos_por_año <- df_poblacion_distritos_barrios %>%
+  group_by(año) %>%
+  summarise(total = n(), .groups = "drop") 
+
+cat('\nFilas por año:\t\t')
+datos_por_año
+
+```
+
+## Estructura por Edad
+
+Los espacios urbanos afectados por la gentrificación generalmente ven incrementada la pobacion determinados rangos de edades de adultos. Consulto los indicadores del ayuntamiento que sirvan para calcular este indicador:
+
+
+```{r,eval=TRUE,echo=TRUE}
+unique(indicadores_distritros_barrios[grepl("Población de",indicadores_distritros_barrios$indicador_completo), ]$indicador_completo)
+```
+Utilizó los indicadores:
+
+- Población de 15 a 29 años
+- Población de 30 a 44  años
+
+```{r,eval=TRUE,echo=TRUE}
+indicador = c("Población de 15 a 29 años","Población de 30 a 44  años")
+
+variables_seleccionadas <- c("año","cod_distrito", "cod_barrio", "indicador_completo", "valor_indicador")
+
+df_edades_poblacion<- indicadores_distritros_barrios[indicadores_distritros_barrios$indicador_completo %in% indicador,variables_seleccionadas]
+
+df_edades_poblacion <- df_edades_poblacion %>%
+  mutate (poblacion_rango_edad=valor_indicador,
+          poblacion_rango_edad= gsub("\\.", "", poblacion_rango_edad),
+          poblacion_rango_edad = as.numeric(poblacion_rango_edad),
+          grupo_edad = indicador_completo,
+          grupo_edad = if_else(grupo_edad == "Población de 15 a 29 años", 'menor_30', 'entre_30_45'),
+          ) %>%
+  select(-valor_indicador,-indicador_completo ) 
+
+str(df_edades_poblacion)
+```
+
+Compruebo que los datos por año están bien informados: 
+
+```{r,eval=TRUE,echo=TRUE}
+datos_por_año <- df_edades_poblacion %>%
+  group_by(año) %>%
+  summarise(total = n(), .groups = "drop") 
+datos_por_año
+```
+Se debe corregir los datos del año. No hay datos de 2020 y la información de 2023 y 2024 está mezclada. 
+
+```{r,eval=TRUE,echo=TRUE}
+df_edades_poblacion <- df_edades_poblacion[] %>%
+  arrange(cod_distrito, cod_barrio, grupo_edad, año) %>% # Ordenación por cod_distrito, cod_barrio, año y grupo_edad
+  group_by(cod_distrito, cod_barrio,grupo_edad) %>%     # Agrupación por distrito, barrio y grupo_edad
+  mutate(
+    row_num = row_number(), 
+    año = if_else(row_num %in% c(5) & lag(año) == año, año + 1, año),  # corrección de años erróneos
+    año = if_else(año>2019, año-1, año)
+  ) %>%
+  ungroup() %>% 
+  select(-row_num)  
+
+datos_por_año <- df_edades_poblacion %>%
+  group_by(año) %>%
+  summarise(total = n(), .groups = "drop") 
+
+datos_por_año
+
+```
+Despues de esta correccion se pueden calcular los dos indicadores.
+
+
+A continuacion añado el porcentaje para sobre el total de población para ambos grupos de edad:
+
+```{r,eval=TRUE,echo=TRUE}
+df_edades_poblacion_menor_30 <- df_edades_poblacion[df_edades_poblacion$grupo_edad =='menor_30',c(1:4)]
+
+df_edades_poblacion_menor_30 <- merge(df_edades_poblacion_menor_30, df_poblacion_distritos_barrios, by=c("año", "cod_distrito", "cod_barrio"), all = TRUE)
+df_edades_poblacion_menor_30$porcentaje_poblacion_menor_30 <- df_edades_poblacion_menor_30$poblacion_rango_edad / df_edades_poblacion_menor_30$poblacion
+str(df_edades_poblacion_menor_30)
+cat('Filas vacias ', sum(is.na(df_edades_poblacion_menor_30)))
+```
+
+```{r,eval=TRUE,echo=TRUE}
+df_edades_poblacion_30_45 <- df_edades_poblacion[df_edades_poblacion$grupo_edad =='entre_30_45',c(1:4)]
+df_edades_poblacion_30_45 <- merge(df_edades_poblacion_30_45, df_poblacion_distritos_barrios, by=c("año", "cod_distrito", "cod_barrio"), all = TRUE)
+df_edades_poblacion_30_45$porcentaje_poblacion_30_45 <- df_edades_poblacion_30_45$poblacion_rango_edad / df_edades_poblacion_30_45$poblacion
+str(df_edades_poblacion_30_45)
+cat('Filas vacias ', sum(is.na(df_edades_poblacion_30_45)))
+
+```
+No exien filas vacias. En ambos casos se han generado bien los indicadores porcentuales de edad. 
+
+## Nacionalidad
+
+PAra esta dimensión de origen de la poblacion busco un indicador de proporción de extranjeros en el conjunto de datos de indicadores: 
+
+```{r,eval=TRUE,echo=TRUE}
+unique(indicadores_distritros_barrios[startsWith(indicadores_distritros_barrios$indicador_completo, "Proporción"), ]$indicador_completo)
+
+```
+
+Salen 2 indicadores. Observo estos 2 indicadores para un barrio concreto: 
+
+```{r,eval=TRUE,echo=TRUE}
+indicador = c("Proporción de personas migrantes (Población extranjera menos UE y resto países de OCDE / Población total)","Proporción de personas migrantes  (Personas extranjeras menos UE y resto países de OCDE / Población total)")
+
+indicadores_distritros_barrios[indicadores_distritros_barrios$indicador_completo %in% indicador & indicadores_distritros_barrios$cod_barrio==11 , c("año", "indicador_completo")]
+
+```
+Vemos en el dato del año 2024 que el nombre del indicador ha variado. Compruebo este dato para todas las observaciones: 
+
+```{r,eval=TRUE,echo=TRUE}
+indicador = c("Proporción de personas migrantes (Población extranjera menos UE y resto países de OCDE / Población total)","Proporción de personas migrantes  (Personas extranjeras menos UE y resto países de OCDE / Población total)")
+
+
+
+datos_por_indicador <- indicadores_distritros_barrios[indicadores_distritros_barrios$indicador_completo %in% indicador , c("año", "indicador_completo")] %>%
+  group_by(indicador_completo, año) %>%
+  summarise(total = n(), .groups = "drop") %>%
+  arrange(-año, total)
+
+
+datos_por_indicador 
+```
+Efectivamente en 2023 y 2024 comenzó a utilizarse una nomenclatura para el mismo indicador. No hay mezcla de indicadores en un mismo año por eso se  puede considerar como un unico indicador. Genero el conjunto de datos: 
+```{r,eval=TRUE,echo=TRUE}
+
+variables_seleccionadas <- c("año","cod_distrito", "cod_barrio", "valor_indicador")
+
+df_nacionalidad_extranjera <- indicadores_distritros_barrios[indicadores_distritros_barrios$indicador_completo %in% indicador,variables_seleccionadas]
+
+
+df_nacionalidad_extranjera <- rename(df_nacionalidad_extranjera,proporcion_extranjeros=valor_indicador)
+rownames(df_nacionalidad_extranjera) <- NULL
+# transformo a numerico
+df_nacionalidad_extranjera$proporcion_extranjeros <-  as.numeric(gsub("\\,", ".", df_nacionalidad_extranjera$proporcion_extranjeros))
+
+str(df_nacionalidad_extranjera)
+
+# total por año
+datos_por_año <- df_nacionalidad_extranjera %>%
+  group_by(año) %>%
+  summarise(total = n(), .groups = "drop")
+
+datos_por_año
+```
+El número de observaciones por año es constante para los años 2019 a 2022. Como se vio anteriormente los datos de 2023 y 2024 pertenecen al mismo indicador. Ambos informan del año 2023. Se debe restar un año para parte de las observaciones de 2024.
+
+```{r,eval=TRUE,echo=TRUE}
+df_nacionalidad_extranjera$año[df_nacionalidad_extranjera$año == 2024] <- 2023
+
+# total por año
+datos_por_año <- df_nacionalidad_extranjera %>%
+  group_by(año) %>%
+  summarise(total = n(), .groups = "drop")
+
+datos_por_año
+
+```
+
+
+
+Observo el dataset:
+
+```{r,eval=TRUE,echo=TRUE}
+head(df_nacionalidad_extranjera)
+```
+
+
+
+## Nivel Educativo
+
+Para la dimension de sustitución de población y velocidad del mismo calculo indicadores del nivel educativo. Para ello utilizo el indidador porcentaje de población mayor de 25 años con estudios universitarios. En el conjunto de datos inicial vemos la información de educación desglosada en 7 indicadores:
+
+```{r,eval=TRUE,echo=TRUE}
+unique(indicadores_distritros_barrios[grepl("25 años",indicadores_distritros_barrios$indicador_completo), ]$indicador_completo)
+
+```
+La población con estudios universitarios se calcula como la suma de dos indicadores:
+
+- Población mayor/igual  de 25 años con titulación media, diplomatura, arquitectura o ingeniería técnica
+- Población mayor/igual  de 25 años  con estudios superiores, licenciatura, arquitectura, ingeniería sup., estudios sup. no universitarios, doctorado,  postgraduado
+
+Obtengo el conjunto reducido de estos indicadores
+```{r,eval=TRUE,echo=TRUE}
+variables_seleccionadas <- c("año","cod_distrito", "cod_barrio", "indicador_completo", "valor_indicador")
+df_nivel_educativo <-indicadores_distritros_barrios[grepl("25 años",indicadores_distritros_barrios$indicador_completo),variables_seleccionadas]
+df_nivel_educativo$indicador_completo <- trimws(df_nivel_educativo$indicador_completo)
+str(df_nivel_educativo)
+```
+Transformo el valor del indicador a numérico para poder sumarlos:
+```{r,eval=TRUE,echo=TRUE}
+
+df_nivel_educativo$valor_indicador <- as.numeric(gsub("\\.", "", df_nivel_educativo$valor_indicador))
+str(df_nivel_educativo)
+
+```
+A continuacion agrupo la poblacion de estudiantes universitarios en una nueva columna booleana *es_universitario*, la cual tiene valor= 1 para poblacion con estudios universitarios, 0 en caso contrario. 
+```{r,eval=TRUE,echo=TRUE}
+# Creo indicador agrupado
+df_nivel_educativo$es_universitario<- ifelse(
+    df_nivel_educativo$indicador_completo %in% c(
+      "Población mayor/igual  de 25 años con titulación media, diplomatura, arquitectura o ingeniería técnica",
+      "Población mayor/igual  de 25 años  con estudios superiores, licenciatura, arquitectura, ingeniería sup., estudios sup. no universitarios, doctorado,  postgraduado"
+    ), 
+    1,  # poblacion con estudios universitarios 
+    0 # poblacion con niveles educativos no universitarios                 
+  )
+
+# Sumo los grupos
+df_nivel_educativo_agrupado <- df_nivel_educativo %>%
+  group_by(año, cod_distrito, cod_barrio, es_universitario) %>%
+  summarise(valor = sum(valor_indicador), .groups = "drop")
+df_nivel_educativo_agrupado <- as.data.frame(df_nivel_educativo_agrupado)
+
+str(df_nivel_educativo_agrupado)
+
+# total por año
+datos_por_año <- df_nivel_educativo_agrupado %>%
+  group_by(año) %>%
+  summarise(total = n(), .groups = "drop")
+
+datos_por_año
+
+```
+
+
+Con estos datos se calculan los siguientes indicadores:
+
+- Porcentaje de entradas mayores de 25 años con estudios universitarios 
+- Cociente de entradas mayores de 25 años con estudios universitarios y el total de la población
+
+
+Calculo el porcentaje de universitarios para cada barrio. 
+```{r,eval=TRUE,echo=TRUE}
+# pivota la columna es_universitario
+df_estudios <- df_nivel_educativo_agrupado %>%
+  pivot_wider(
+    names_from = es_universitario,
+    names_prefix = "es_universitario_",
+    values_from = valor,
+    values_fill = 0                
+  ) %>%
+  rename(sin_estudios_universitarios = es_universitario_0,
+         con_estudios_universitarios = es_universitario_1)
+
+df_estudios$porcentaje_universitarios <- df_estudios$con_estudios_universitarios / df_estudios$sin_estudios_universitarios
+df_estudios <- as.data.frame(df_estudios)
+str(df_estudios)
+cat('Filas vacias ', sum(is.na(df_estudios)))
+```
+
+
+A continuación, calculo el cociente entre la poblacion mayor de 25 años con estudios universitarios respecto del total de poblacion. 
+En primer lugar, añado la información de los datos de poblacion del dataset **df_poblacion_distritos_barrios**
+
+```{r,eval=TRUE,echo=TRUE}
+df_universitarios <- df_nivel_educativo_agrupado[df_nivel_educativo_agrupado$es_universitario==1,]
+df_universitarios <- df_universitarios[,c(1:3,5)]
+df_universitarios <- rename(df_universitarios, universitarios=valor)
+
+df_universitarios <- merge(df_universitarios, df_poblacion_distritos_barrios, by=c("año", "cod_distrito", "cod_barrio"), all = TRUE)
+
+str(df_universitarios)
+cat('Filas vacias ', sum(is.na(df_universitarios)))
+```
+Calculo el indicador mencionado: 
+```{r,eval=TRUE,echo=TRUE}
+df_universitarios$porcentaje_universitarios_poblacion_total <- df_universitarios$universitarios/df_universitarios$poblacion
+str(df_universitarios)
+```
+
+
+## Hogares unipersonales
+
+En la dimension de estructura del hogar utilizo el indicador de hogares unipersonales por edad. Para ello cargo **dataset 1.1.5.9.B. Hogares clasificados por Tipo de hogar según su Composición y Nacionalidad de sus miembros (españoles y extranjeros) por Distrito**. Obtengo el número hogares con hombres o mujeres mayores de 16 años y menor de 65, asi como el total de hogares para todos los distritos y barrios. Se debe sumar el dato de las mujeres con el hombres y calcular el porcentaje. 
+
+
+```{r,eval=TRUE,echo=TRUE}
+indicadores_hogares_unipersonales<-read.csv("../datos/Datos de la serie 0302010600092.csv", sep=";", na.strings="NA",colClasses = "character")
+str(indicadores_hogares_unipersonales)
+```
+ 
+Aplico los siguentes cambios al dataset:
+
+- Renombro las columnas de codigo de barrio y distrito
+- Obtengo el valor numerico del año. El dato informa de la fecha. 
+- Codifico los datos a nivel de ciudad con codigos de barrio y distrito 0
+- Transformo el codigo de barrio y distrito a numerico
+- Transformo los campos de Total, mujer y hombre a numerico teniendo en cuenta el caracter separador de centenas
+
+```{r,eval=TRUE,echo=TRUE}
+
+
+indicadores_hogares_unipersonales <-
+  indicadores_hogares_unipersonales %>%
+  rename(cod_distrito = distrito, cod_barrio = barrio) %>%
+  filter(cod_barrio != "Ciudad de Madrid", cod_barrio != cod_distrito) %>%
+  mutate(
+    año = str_sub(año , -4),
+    año = as.integer(año) -1,
+    cod_barrio = sub("\\..*", "", cod_barrio),
+    cod_barrio = as.numeric(cod_barrio),
+    cod_distrito = sub("\\..*", "", cod_distrito),
+    cod_distrito = as.numeric(cod_distrito),
+    total = gsub("\\.", "", Total),
+    total = as.numeric(total),
+    mujer = gsub("\\.", "", mujer),
+    mujer = as.numeric(mujer),
+    hombre = gsub("\\.", "", hombre),
+    hombre = as.numeric(hombre)
+  )  %>%
+  select(-Total)
+
+indicadores_hogares_unipersonales <- as.data.frame(indicadores_hogares_unipersonales)
+
+str(indicadores_hogares_unipersonales)
+
+# total por año
+datos_por_año <- indicadores_hogares_unipersonales %>%
+  group_by(año) %>%
+  summarise(total = n(), .groups = "drop")
+
+datos_por_año
+
+```
+
+Los datos están bien distribuidos por año. Calculo el indicador de total de hogares unipersonales como la suma de hogares con solo mujeres y solo hombres:
+
+```{r,eval=TRUE,echo=TRUE}
+
+indicadores_hogares_unipersonales <-
+  indicadores_hogares_unipersonales %>%
+  mutate(
+    total_unipersonales = indicadores_hogares_unipersonales$mujer + indicadores_hogares_unipersonales$hombre,
+    porcentaje_hogares_unipersonales = total_unipersonales / total
+  )
+
+str(indicadores_hogares_unipersonales)
+
+```
+
+# Exploracion
+
+
+En este apartado voy a explorar los datasets *df_edades_poblacion_30_45, df_edades_poblacion_menor_30, df_nacionalidad_extranjera, df_estudios, df_universitarios , indicadores_hogares_unipersonales*.
+
+Para ello defino una función que permite visualizar los valores extremos en un *boxplot*, la distribucion del indocador en un histograma y la información de los barrios con valores extremos:
+
+
+```{r,eval=TRUE,echo=TRUE}
+
+analiza_valores_datset <-
+  function(df_datos,
+           indicador,
+           nombre_dataset,
+           df_nombre_barrios,
+           orden_merge) {
+    b <- boxplot(df_datos[, indicador], main = nombre_dataset)
+    hist(df_datos[, indicador], main = nombre_dataset, xlab = indicador)
+    
+    barrios_valores_extremos <-
+      df_datos[df_datos[, indicador] %in% b$out,]
+    barrios_valores_extremos <-
+      merge(
+        unique(barrios_valores_extremos[, orden_merge]),
+        df_nombre_barrios,
+        by = c("cod_distrito", "cod_barrio"),
+        all.x = TRUE
+      )
+    barrios_valores_extremos
+  }
+```
+
+## Edades de población
+
+Comienzo con la población menor de 30 años: 
+
+
+```{r,eval=TRUE,echo=TRUE}
+analiza_valores_datset(df_edades_poblacion_menor_30,'porcentaje_poblacion_menor_30', 'Poblacion menor de 30 años', df_nombre_distristros_barrios,c(2,3,1,6))
+
+```
+
+
+LOs valores extremos altos se observan en algunos barrios céntricos y de la periferia. 
+
+Obsevamos que lo mismo ocurre para los datos de poblacion entre 30 y 45 años. 
+
+```{r,eval=TRUE,echo=TRUE}
+analiza_valores_datset(df_edades_poblacion_30_45,'porcentaje_poblacion_30_45', 'Poblacion entre 30 y 45 años', df_nombre_distristros_barrios, c(2,3,1,6))
+
+```
+
+
+
+## Nacionalidad extranjera
+
+
+```{r,eval=TRUE,echo=TRUE}
+#df_nacionalidad_extranjera,
+#df_nombre_distristros_barrios
+
+analiza_valores_datset(df_nacionalidad_extranjera,'proporcion_extranjeros', 'Proporcion de extranjeros', df_nombre_distristros_barrios, c(2,3,1,4))
+
+```
+Se observa gran diferencia entre los valores. Compruebo los años con valores superiores
+```{r,eval=TRUE,echo=TRUE}
+unique(df_nacionalidad_extranjera[df_nacionalidad_extranjera$proporcion_extranjeros > 1,]$año)
+
+head(df_nacionalidad_extranjera[df_nacionalidad_extranjera$proporcion_extranjeros > 1,])
+head(df_nacionalidad_extranjera[df_nacionalidad_extranjera$proporcion_extranjeros <1,])
+```
+Se ha utilizado diferente escala para los años 2019-20 y el resto de años. No parece una fuente fiable. Decido cargar la información de otro dataset
+
+Utilizo la información del indicados *"1.1.3.3.B. Población clasificada por Nacionalidad (continente) y Sexo, según Distrito y Barrio (desde el 1 de enero de 2018)"* agregada por sexos. 
+
+
+
+```{r,eval=TRUE,echo=TRUE}
+df_nacionalidad_extranjera_2<-read.csv("../datos/Datos de la serie 0302010300032.csv", sep=";", na.strings="NA",colClasses = "character")
+str(df_nacionalidad_extranjera_2)
+```
+
+Se requiren realizar algunos cambios en el formato numerico de los valores y de los identificadores de distrito y barrio:
+
+
+```{r,eval=TRUE,echo=TRUE}
+df_nacionalidad_extranjera_2 <-
+  df_nacionalidad_extranjera_2 %>%
+  rename(cod_distrito = distrito, cod_barrio = barrio) %>%
+  mutate(
+    año = str_sub(año , -4),
+    año=as.numeric(año),
+    cod_distrito = substr(cod_distrito , 1,2), 
+    cod_barrio = substr(cod_barrio , 1,3),
+    cod_barrio = sub("\\.", "", cod_barrio),
+    cod_barrio = as.numeric(cod_barrio),
+    cod_distrito = sub("\\.", "", cod_distrito),
+    cod_distrito = as.numeric(cod_distrito),
+    total = gsub("\\.", "", total),
+    total = as.numeric(total),
+    españoles = gsub("\\.", "", españoles),
+    españoles = as.numeric(españoles)
+  )  %>%
+  filter(cod_barrio!=cod_distrito)
+
+
+str(df_nacionalidad_extranjera_2)
+
+# total por año
+datos_por_año <- df_nacionalidad_extranjera_2 %>%
+  group_by(año) %>%
+  summarise(total = n(), .groups = "drop")
+
+datos_por_año
+
+```
+Se debe restar un año al valor de 2024, ya que se trata del año 2023
+
+```{r,eval=TRUE,echo=TRUE}
+df_nacionalidad_extranjera_2$año[df_nacionalidad_extranjera_2$año==2024]<-2023
+```
+
+Con estos datos se puede calcular la proporción de extranjeros 
+
+```{r,eval=TRUE,echo=TRUE}
+df_nacionalidad_extranjera_2$proporcion_extranjeros <- 1 - df_nacionalidad_extranjera_2$españoles/df_nacionalidad_extranjera_2$total
+```
+
+Analizo los valores extremos: 
+
+```{r,eval=TRUE,echo=TRUE}
+analiza_valores_datset(df_nacionalidad_extranjera_2,'proporcion_extranjeros', 'Proporcion de extranjeros', df_nombre_distristros_barrios,c(2,3,1,6))
+
+```
+En este dataset los valores están mejor distribuidos. Se observan valores altos en barrios de los distritos de **Usera, Puente de Vallecas** y **Villaverde**. Estos distrititos se encuentran en la periferia de la ciudad y tradicionalmente han sido receptores de inmigrantes.
+Sin embargo se observa un valor alto en **Sol**, un barrio ubicado en el distrito **Centro**. Debido a su ubicación este barrio suele estar poblado por las clases altas. 
+
+## Niveles de estudios
+
+Analiso los datasets  *df_estudios, df_universitarios*.
+
+
+```{r,eval=TRUE,echo=TRUE}
+analiza_valores_datset(df_estudios,'porcentaje_universitarios', '% de universitarios/no universitarios', df_nombre_distristros_barrios,c(2,3,1,6))
+
+```
+No existen valores extremos para el indicador de poblacion con estudios universitarios frente a población sin estudios.
+
+Compruebo el indicados de estudiantes universisarios frente a la población total. 
+
+```{r,eval=TRUE,echo=TRUE}
+analiza_valores_datset(df_universitarios,'porcentaje_universitarios_poblacion_total', 'Porcentaje de universitarios sobre poblacion total', df_nombre_distristros_barrios,c(2,3,1,6))
+
+```
+
+Tampoco existen valores extremos
+
+
+## Hogares unipersonales
+
+Añalizo el dataset *indicadores_hogares_unipersonales*
+
+```{r,eval=TRUE,echo=TRUE}
+analiza_valores_datset(indicadores_hogares_unipersonales,'porcentaje_hogares_unipersonales', 'Porcentaje hogares universonales', df_nombre_distristros_barrios,c(2,3,1,8))
+
+```
+La mayor parte de los valores extremos se encuentran en el distrito **Centro**, los cuales son los candidatos a estar gentrificados. Mantengo estos valores. 
+
+
+# Unificacion de indicadores
+
+En este apartado unifico los indicadores de los diferentes *dataframes* en un único conjunto de datos.
+
+
+```{r,eval=TRUE,echo=TRUE}
+datasets <- c(df_edades_poblacion_30_45, df_edades_poblacion_menor_30, df_nacionalidad_extranjera_2, df_estudios, df_universitarios , indicadores_hogares_unipersonales)
+
+
+# Inicializo con porcentaje edad entre 30 y 45
+df_unificado <- df_edades_poblacion_30_45[,c(1:3,6)]
+
+# Añado porcentaje edad menos de 30
+df_unificado$porcentaje_poblacion_menor_30 <- df_edades_poblacion_menor_30$porcentaje_poblacion_menor_30
+
+# Añado porcentaje de extranjeros
+df_unificado <- merge(df_unificado, df_nacionalidad_extranjera_2[, c(1:3,6)], by=c("cod_distrito","cod_barrio", 'año'), all.x = TRUE)
+
+# Añado porcentaje poblacion con universitarios frente poblacion sin estudios
+df_unificado <- merge(df_unificado, df_estudios[, c(1:3,6)], by=c("cod_distrito","cod_barrio", 'año'), all.x = TRUE)
+
+
+# Añado porcentaje poblacion con universitarios frente poblacion total
+df_unificado <- merge(df_unificado, df_universitarios[, c(1:3,6)], by=c("cod_distrito","cod_barrio", 'año'), all.x = TRUE)
+
+
+# Añado hogares universionales
+df_unificado <- merge(df_unificado, indicadores_hogares_unipersonales[, c(1:3,8)], by=c("cod_distrito","cod_barrio", 'año'), all.x = TRUE)
+
+
+str(df_unificado)
+```
+
+## Evolución de los indicadores entre 2019 y 2024
+
+Resulta interesante analizar los indicadores en dos momentos del tiempo. Para ello calculo las diferencias entre ambos años: 
+
+```{r,eval=TRUE,echo=TRUE}
+
+df_diferencias_23_19 <- df_unificado[df_unificado$año == 2023,c(-3)] - df_unificado[df_unificado$año == 2019,c(-3)]
+df_diferencias_23_19$cod_distrito   <-  df_unificado$cod_distrito[df_unificado$año == 2023] 
+df_diferencias_23_19$cod_barrio   <-  df_unificado$cod_barrio[df_unificado$año == 2023]   
+str(df_diferencias_23_19)
+```
+
+
+## Correlaciones
+
+Una vez que están todos los indicadores calculados, es necesario analizar si existe algun tipo de relacion entre ellos. Por ello calculo y visualizo la matrix de correlación.
+
+```{r,eval=TRUE,echo=TRUE}
+matriz_correlacion <-
+  cor(df_unificado[, c(-1:-3)], use = "complete.obs", method = "pearson")
+
+
+# Grafico de la correlación
+ggcorrplot(
+  matriz_correlacion,
+  lab = TRUE,
+  lab_size = 3,
+  method = "circle",
+  colors = c("blue", "white", "red"),
+  outline.color = "black"
+)
+
+
+# filtro las variables altamente correlacionadas
+matriz_correlacion_fusionada <- melt(matriz_correlacion)
+matriz_correlacion_fusionada[abs(matriz_correlacion_fusionada$value) > 0.8 &
+                               matriz_correlacion_fusionada$Var1 != matriz_correlacion_fusionada$Var2,]
+
+
+```
+Prescindo del indicador *porcentaje_universitarios*
+
+```{r,eval=TRUE,echo=TRUE}
+df_unificado <- df_unificado[,c(-7)]
+str(df_unificado)
+```
+
+
+
+## Normalización
+
+Para obtener mejores resultados en la clasificacion kmeans es recomendable normalizar los valores de los indicidadores: 
+
+```{r,eval=TRUE,echo=TRUE}
+str(df_unificado)
+normalizar <- function(x) {
+  (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
+}
+columnas_a_normalizar <- c(4:8)
+df_normalizado <- df_unificado
+df_normalizado[columnas_a_normalizar] <- lapply(df_normalizado[columnas_a_normalizar], normalizar)
+
+str(df_normalizado)
+```
+
+
+# Clasificación de barrios segun indicadores
+
+En primer lugar identifico visualmente el número de *clusters* por el método del codo y de la silueta: 
+
+```{r,eval=TRUE,echo=TRUE}
+# fijado de semila de aleatoreidad
+set.seed(20) 
+# Método del codo
+fviz_nbclust(df_normalizado[df_normalizado$año == 2023, c(-1:-3)], kmeans, method = "wss") +
+  labs(title = "Método del Codo año 2023", x = "Número de clústeres (k)", y = "Suma de distancias cuadradas") + geom_vline(xintercept = 3, linetype = 2) + geom_vline(xintercept = 4, linetype = 3) + geom_vline(xintercept = 2, linetype = 3)
+
+```
+
+Metodo silueta.
+
+
+```{r,eval=TRUE,echo=TRUE}
+set.seed(20) 
+# Calcular el análisis de silueta
+fviz_nbclust(df_normalizado[df_normalizado$año == 2023, c(-1:-3)] , kmeans, method = "silhouette") +
+  labs(title = "Análisis de Silueta 2023", x = "Número de clústeres (k)", y = "Ancho promedio de la silueta")
+
+
+```
+
+Aplico el algotitmo de division para k = 3. 
+
+```{r,eval=TRUE,echo=TRUE}
+set.seed(20)
+k <- 3
+df_cluster <- df_normalizado[df_normalizado$año==2023,]
+resultado_kmeans <- kmeans(df_cluster[c(-1:-3)], centers = k, nstart = 10)
+# Visualización
+fviz_cluster(resultado_kmeans, data =df_cluster[,c(-1:-3)], palette = c("green", "red", "blue")) +
+  labs(title = "Resultados clasificacion k-means con k=3") 
+
+df_cluster$cluster <- resultado_kmeans$cluster
+```
+
+# Añálisis incial en un mapa de Carto
+
+En Carto genero un mapa con la información de los indicadores de barrios, asi como la agrupacion kmeans. 
+
+Para ello, en primer lugar cargo el mapa de los barrios de Madrid: 
+```{r,eval=TRUE,echo=TRUE}
+# Mapa de barrios
+
+ruta_shapefile <- "../mapa/Barrios/barrios.shp"
+mapa_barrios <- st_read(ruta_shapefile)
+
+str(mapa_barrios)
+
+```
+
+Modifico el nombre de la variable de codigo de barrio y codigo de distrito para poder hacer el cruce de datos con el dataset que he preparado: 
+
+```{r,eval=TRUE,echo=TRUE}
+df_mapa_barrios <- mapa_barrios %>%
+  rename(cod_barrio = COD_BAR, cod_distrito = CODDIS)
+
+str(df_mapa_barrios)
+
+```
+
+## Incorporación de datos al mapa
+
+Renombro la variable cluster a grado de gentrificación. En este momento aun no sé identificar que grupo corresponde a cada grado de gentrificación. A partir de la visualizacion en el mapa y análisis de los indicadores descrubriré que grupo corresponde con cada nivel:
+
+```{r,eval=TRUE,echo=TRUE}
+
+df_datos_2023 <- df_cluster %>%
+  rename(grado_gentrificacion = cluster) %>%
+  select(-año)
+str(df_datos_2023)
+```
+
+Pivoto las variables de los indicadores y grado de gentrificación para juntarlas todas en una misma columna:
+
+```{r,eval=TRUE,echo=TRUE}
+df_datos_2023$cod_barrio <- str_pad(as.character(df_datos_2023$cod_barrio), width = 3, pad = "0")
+
+df_datos_2023_mapa <- df_datos_2023 %>%
+  mutate(cod_barrio = str_pad(as.character(cod_barrio), width = 3, pad = "0"))  %>%
+  pivot_longer(
+    cols = 3:8,            
+    names_to = "indicador",   
+    values_to = "valor_indicador"      
+  )
+
+str(df_datos_2023_mapa)
+```
+
+Incorporo los datos al mapa
+
+```{r,eval=TRUE,echo=TRUE}
+df_mapa_barrios <- df_mapa_barrios %>%
+  left_join(df_datos_2023_mapa, by = "cod_barrio")
+```
+
+
+Exporto el fichero de mapa con datos:
+
+```{r,eval=TRUE,echo=TRUE}
+ruta_fichero_mapa_barrios  <- "../mapa/Barrios/barrios_con_indicadores_2023.shp"
+st_write(df_mapa_barrios, ruta_fichero_mapa_barrios, append=FALSE)
+
+```
+## Información del mapa en carto
+
+Genero un primer mapa de Clasificación kmeans de barrios según indicadores de gentrificación
+
+El mapa se compone de 2 capas:
+
+- La capa superior muestra la agrupación de barrios en base a los indicadores de gentrificación utilizados. El número de grupos utilizados es 3. 
+
+- la capa inferior muestra los valores del indicador seleccionado en la pestaña de **Parámetro** 
+
+Se pueden mostrar y ocultar cada una de las capas. 
+
+Los 2 iconos ubicados en la parte superior derecha del mapa permiten intercambiar la visualización de esta descripción y la sección de parámetros y widgets
+
+### Parámetro de tipo de indicador
+
+La selección del indicador mostrado en la capa de indicadores se hace en la pestaña *parameters*. Este parámetro modifica dinámicamente la consulta SQL a la tabla de datos, permitiendo visualizar uno de los 5 indicadores utilizados en la capa *Indicador*. Los widgets de la capa *Indicador* son actualizados automáticamente con la selección de este parámetro. Para la correcta visualización de datos es importante seleccionar únicamente un solo indicador del combo de selección
+
+Los valores posibles son: 
+
+```{r,eval=TRUE,echo=TRUE}
+sort(unique(df_mapa_barrios$indicador))
+```
+
+### Widgets
+
+He añadido los siguientes *widgets* al mapa, los cuales permiten interactuar dinámicamente con cada capa del mapa.
+
+#### Capa de agrupación:
+
+- **Agrupacion kmeans**. Permite seleccionar las agrupaciones a visualizar en el mapa
+- **Selector de barrios** según grupo de clasificación
+- **Tabla clasificación gentrificación**. Permite visualizar y buscar por barrios, distritos y grupo de gentrificación. 
+
+#### Capa de indicador
+
+- **Distribución del indicador.** Permite seleccionar los barrios visualizados en función del valor de su indicador. 
+- **Tabla de indicadores.** Permite visualizar y buscar por por barrios, distritos e indicador seleccionado.  
+
+El mapa está publicado en  https://pinea.app.carto.com/map/4aced469-f471-438e-8050-1f6b26d874d2 .
+
+# Conclusiones iniciales
+
+El mapa generado tiene 2 capas. La capa superior contiene la division de barrios generada por el algoritmo de kmeans. Los barrios céntricos están agrupados en un mismo cluster. La gentrificación tradicionalmente se produce en barrios céntricos. Esto nos hace pensar que este grupo es el que presenta mayor grado de gentrificación. Observo el valor medio de los indicadores por grupo de barrios:
+
+
+```{r,eval=TRUE,echo=TRUE}
+df_cluster_resumen <- df_cluster %>%
+  group_by(cluster) %>%
+  summarise(across(4:8, mean))  %>%
+  pivot_longer(cols = -cluster, names_to = "indicador", values_to = "valor_medio")
+
+
+# Gráfico
+ggplot(df_cluster_resumen, aes(x = indicador, y = valor_medio, fill = as.factor(cluster))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~indicador, scales = "free", ncol = 2) +
+  labs(
+    title = "Valor medio de cada indicador para cada cluster kmeans",
+    x = "Indicador",
+    y = "Valor medio del indicador",
+    fill = "Grupo kmeans"
+  ) +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Reds") 
+
+```
+
+El *cluster* 2 contiene el mayor indicador medio de hogares unipersonales, población menor de 30 y  entre 30 - 45, población con estudios universitarrios. El porcentaje de extranjeros es alto, similar al cluster 1.
+
+Sin embargo, en el cluster 1 el porcentaje de universitarios y hogares unipersonales es bajo. En el cluster 3 vemos valores intermedios, salvo para el indicador de extranjeros.  
+
+
+En el mapa se observan algunos barrios de la periferia clasificados en el cluster 2. Estos son:
+
+- *Rejas*
+- *El Cañaveral* 
+- *Ensanche de Vallecas*
+
+Vemos los indicadores de estos barrios en comparación con el valor medio del grupo:
+
+
+```{r,eval=TRUE,echo=TRUE}
+df_cluster_periferia <-df_cluster[df_cluster$cod_barrio %in% c(206, 183, 194),c(2,4:8)]
+
+df_cluster_periferia
+
+df_cluster_periferia <- merge(
+  df_cluster_periferia,
+  df_nombre_distristros_barrios,
+  by = c("cod_barrio"),
+  all.x = TRUE
+)
+
+df_cluster_periferia_pivotado <- df_cluster_periferia[c(2:6,9)] %>%
+  pivot_longer(
+    cols = -barrio,                  
+    names_to = "indicador",       
+    values_to = "valor"         
+  ) 
+
+df_valor_medio <- df_cluster_resumen[df_cluster_resumen$cluster==2,c(2:3)] %>%
+  rename(valor=valor_medio)
+# añado valor ficticio  
+df_valor_medio$barrio <- 'Cluster 2'
+
+df <- rbind(df_cluster_periferia_pivotado, df_valor_medio)
+
+
+ggplot(df, aes(x = indicador, y = valor, fill = as.factor(barrio))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~indicador, scales = "free", ncol = 2) +
+  labs(
+    title = "Valor del indicador para cada barrio",
+    x = "Indicador",
+    y = "Valor del indicador",
+    fill = "Barrio"
+  ) +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Reds") 
+```
+
+En *El Cañaveral* vemos un valor alto en el indicador de gente entre 30 y 45. Esto se debe a que es un barrio nuevo atractivo para gente joven. En *Rejas* ocurre lo mismo con el indicador de gente menor de 30. El resto de indicadores difieren poco de la media del cluster.
+Al ser barrios de nueva creación no existe desplazamiento de población, por lo que no encajan la definición exacta de gentrificacion
+
+
+Concluyo Por todo esto se deduce que el grado de gentrificación es alto en el grupo 2, medio en el grupo 3 y bajo en el grupo 1. 
+
+
+Para facilitar la interpretación en el mapa asocio el valor 3 al cluster de barrios con alta gentrificación, 2 al medio y 1 al bajo.
+
+```{r,eval=TRUE,echo=TRUE}
+df_cluster <- df_cluster  %>%
+  mutate(grado = case_when(cluster == 1 ~ 1,
+                           cluster == 2 ~ 3,
+                           cluster == 3 ~ 2))
+str(df_cluster)
+```
+
+
+
+
+# Mapa de evolución de indicadores y grado de gentrificación
+
+
+Para ver la evolución de los indicadores a lo largo del periodo de estudio utilizo el conjunto de datos *df_diferencias_23_19* creado anteriormente, al que añado la variable grado gentrificación.
+Marco este conjunto de datos como tipo *variación*. Esta marca sirve para filtar los datos en la consulta de datos de carto.
+
+```{r,eval=TRUE,echo=TRUE}
+df_diferencias_23_19 <- merge(df_diferencias_23_19[, c(-6)], df_cluster[,c(1:3, 10)], by=c('cod_distrito', 'cod_barrio'), all = TRUE)
+# añado variable tipo para utilizarlo en el mapa
+df_diferencias_23_19$tipo <- "variacion"
+str(df_diferencias_23_19)
+```
+
+
+Añado a este dataset el conjunto de indicadores para el periodo 2019-2023. El tipo de estos datos es *total*
+
+```{r,eval=TRUE,echo=TRUE}
+df_mapa_total_y_diferencias <- df_unificado
+# marcado de tipo de dato
+df_mapa_total_y_diferencias$tipo <- "total"
+# valor ficticio
+df_mapa_total_y_diferencias$grado <- 0
+df_mapa_total_y_diferencias <- rbind(df_mapa_total_y_diferencias, df_diferencias_23_19)
+
+str(df_mapa_total_y_diferencias)
+
+```
+
+Pivoto los datos para añadirlo al mapa 
+```{r,eval=TRUE,echo=TRUE}
+
+df_mapa_total_y_diferencias_mapa <- df_mapa_total_y_diferencias %>%
+  mutate(cod_barrio = str_pad(as.character(cod_barrio), width = 3, pad = "0"))  %>%
+  pivot_longer(
+    cols = 4:8,            
+    names_to = "indicador",   
+    values_to = "valor_indicador"      
+  )
+
+str(df_mapa_total_y_diferencias_mapa)
+```
+
+
+Genero el fichero del mapa
+
+```{r,eval=TRUE,echo=TRUE}
+# Mapa de barrios
+ruta_shapefile <- "../mapa/Barrios/barrios.shp"
+mapa_barrios <- st_read(ruta_shapefile)
+df_mapa_barrios <- mapa_barrios %>%
+  rename(cod_barrio = COD_BAR, cod_distrito = CODDIS)
+
+```
+
+Incorporo los datos al mapa
+
+```{r,eval=TRUE,echo=TRUE}
+df_mapa_barrios <- df_mapa_barrios %>%
+  left_join(df_mapa_total_y_diferencias_mapa, by = "cod_barrio")
+```
+
+
+Exporto el fichero de mapa con datos:
+
+```{r,eval=TRUE,echo=TRUE}
+ruta_fichero_mapa_barrios  <- "../mapa/Barrios/barrios_indicadores_total_y_variacion.shp"
+st_write(df_mapa_barrios, ruta_fichero_mapa_barrios, append=FALSE)
+
+```
+```{r,eval=TRUE,echo=TRUE}
+df_cuenta <- df_nacionalidad_extranjera[df_nacionalidad_extranjera$año==2023, c(2,3)]
+df_cuenta %>%
+  group_by(cod_distrito ) %>%
+  summarise(barrios_por_distrito = n())  %>%
+arrange(desc(barrios_por_distrito))
+```
+
+
+## Información del mapa de carto
+
+He generado el mapa denoninado *Clasificación de barrios según indicadores de gentrificación*
+
+El mapa está publicado en https://pinea.app.carto.com/map/5847c277-513e-4931-8e5c-b2efc0788f8e . Su contraseña es PEC3
+
+El mapa se compone de 3 capas:
+
+- La capa superior muestra los barrios con su grado de gentrificación. Se han obtenido 3 niveles:
+	- 1 Bajo
+	- 2 Medio
+	- 3 Alto
+	
+Obtengo los datos con la siguiente consulta: 
+
+~~~~sql
+select geom, 
+       cod_brr as codigo_barrio, 
+       nombre as barrio, 
+       nomdis as distrito, 
+       cod_dis_ as codigo_distrito, 
+       ano, grado  
+       from  carto-dw-ac-la4d97nr.private_jgonzalezmoran_71e8a6dd.barrios_indicadores_total_y_variacion  tabla 
+       where tabla.tipo='variacion' and 
+       indicdr='proporcion_extranjeros'
+~~~~
+
+En esta consulta fijo un valor cualquiera para el indicador para obtener menos resultados. Existen otros mecanismos en SQL para obtener el mismo resultado, pero no quería complicar la consulta. 
+	
+	
+- La capa intermedia muestra en cada barrio la diferencia en puntos porcentuajes del indicador seleccionado en la pestaña de **Parámetro** 
+
+Esta es la consulta utlizada en carto: 
+
+~~~~sql
+select geom,  
+       nomdis as distrito,
+       cod_dis_ as codigo_distrito, 
+       cod_brr as codigo_barrio, 
+       nombre as barrio, 
+       indicdr as indicador, 
+       vlr_ndc as valor, 
+       grado
+  from  carto-dw-ac-la4d97nr.private_jgonzalezmoran_71e8a6dd.barrios_indicadores_total_y_variacion  tabla 
+  where tabla.tipo='variacion' and 
+  tabla.indicdr in {{indicador}}
+~~~~
+
+- la capa inferior muestra el valor del indicador seleccionado en la pestaña de **Parámetro** 
+
+Obtengo los datos mediante la consulta: 
+
+~~~~sql
+select geom, 
+  nomdis as distrito, 
+  cod_dis_ as codigo_distrito, 
+  cod_brr as codigo_barrio, 
+  nombre as barrio, 
+	ano, 
+	indicdr as indicador, 
+	vlr_ndc as valor
+  from  carto-dw-ac-la4d97nr.private_jgonzalezmoran_71e8a6dd.barrios_indicadores_total_y_variacion  tabla 
+  where tabla.tipo='total' and 
+  tabla.indicdr in {{indicador}}
+~~~~
+
+
+Se pueden mostrar y ocultar cada una de las capas. 
+
+Los 2 iconos ubicados en la parte superior derecha del mapa permiten intercambiar la visualización de esta descripción y la sección de parámetros y widgets
+
+
+### Parámetro tipo de indicador
+
+Selección del indicador mostrado en la capa de indicadores. Este parámetro modifica dinámicamente la consulta SQL a la tabla de datos, permitiendo visualizar uno de los 5 indicadores utilizados en la capa *Indicador*. 
+Los widgets de las capas de *Indicador* y *evolucion de indicadores* son actualizados automáticamente con la selección de este parámetro. 
+Para la correcta visualización de datos es importante seleccionar únicamente un solo indicador del combo de selección
+
+
+
+### Widgets:
+
+Los widgets están asociados al visualización de datos de cada capa. Se listan a continuación: 
+
+
+#### Capa grado de gentrificación:
+
+- **Grado de getrificación**. Permite seleccionar las agrupaciones a visualizar en el mapa
+- **Selector de barrios**. Permite seleccion multiple de barrios. Lista ordenada según nivel descendente de grado de gentrificación
+- **Tabla clasificación gentrificación**. Permite visualizar y buscar por barrios, distritos y grupo de gentrificación. 
+
+#### Capa de diferencia de indicadores 
+
+- **Diferencia de indicador por barrio**. Gráfico de tarta que muestra los barrios con mayor valor en la diferencia de indicadores
+- **Diferencias de indicador 19-23**. Histograma de la diferencia del valor del indicador. 
+- **Tabla de evolución de indicadores**. Permite visualizar y buscar por barrios, distritos la evolución del indicador junto con el grado de gentrificación. 
+
+
+#### Capa de Indicadores
+
+- **Selector de año en capa de indicador** Permite seleccionar un año del periodo 2019 a 2023. Los datos visualizados se actualizan con el valor elegido. Se puede seleccionar un rango. 
+- **Distribución del indicador**.  Histograma del valor del indicador para el periodo seleccionado. 
+- **Tabla de indicadores.** Permite visualizar y buscar por por barrios, distritos el valor del indicador seleccionado.  
+
+> Nota: Las capturas se añaden directamente en la memoria
+
+# Conclusiones
+
+
+A nivel de indicadores, se observa un aumento en los valores de ciertos barrios que no han sido clasificados dentro del mismo *cluster* por el modelo de agrupación *k-means*. Esto sugiere que los procesos asociados a la gentrificación no siempre responden a patrones homogéneos o evidentes cuando se analizan indicadores individuales. Sin embargo, al observar la evolución conjunta de todos los indicadores, se obtiene una visión más clara sobre qué barrios reúnen las condiciones propias de la gentrificación.
+
+En términos geográficos, los barrios pertenecientes a los distritos céntricos como *Centro, Chamberí, Salamanca* y *Tetuán*, son los que presentan el mayor grado de gentrificación según el análisis realizado. 
+Además, los barrios *Rejas, El Cañaveral* y *Ensanche de Vallecas* destacan por situarse también en el grupo de alta gentrificación. Aunque estos últimos han sido urbanizados recientemente, comparten características similares en los indicadores de gentrificación con los barrios céntricos, diferenciándose a la vez de los demas barrios dentro de sus respectivos distritos. Este fenómeno merece una atención especial y la incorporación de más indicadores que permitan evaluar con mayor precisión si efectivamente se trata de procesos de gentrificación o de otro tipo de transformaciones urbanas.
+
+Los datos empleados para calcular los indicadores de la dimensión de sustitucion poblacional y velocidad del cambio, ha sido seleccionados entre los mejores datos disponibles. No obstante, sería deseable repetir el estudio en el futuro utilizando datos más detallados y precisos sobre los movimientos de entrada y salida de población, lo cual permitiría obtener conclusiones más robustas.
+
+El análisis también pone de manifiesto una dinámica geográfica notable: el grado medio de gentrificación parece concentrarse en casi todo el norte de Madrid, marcando una frontera muy clara entre el norte y el sur de la ciudad. Este hallazgo plantea preguntas importantes sobre las diferencias estructurales y socioeconómicas que podrían estar acentuando esta división. Sería imprescindible profundizar en esta observación mediante el análisis de un conjunto más amplio de indicadores socioeconómicos, como el nivel de ingresos, la estructura del empleo, los precios del alquiler y los flujos migratorios internos.
+
+En conclusión, el estudio confirma que la gentrificación en Madrid no solo afecta a los barrios más céntricos, sino que exiten una tendencia expansionista a otras áreas. Este proceso genera patrones complejos que demandan un análisis multidimensional y datos más detallados para comprender plenamente su alcance y sus implicaciones sociales y urbanísticas.
+
+
+
